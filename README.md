@@ -24,11 +24,6 @@ Cursor, VS Code, claude.ai e os demais clientes estão em
 [skills/greatpages-landing-page/references/mcp-setup.md](skills/greatpages-landing-page/references/mcp-setup.md).
 Precisa de uma conta GreatPages; a gratuita publica em subdomínio gratuito.
 
-> Com o MCP conectado você já tem a skill sem instalar nada: o prompt `criar-landing-page`
-> do servidor devolve o conteúdo dela. No Claude Code, digite
-> `/mcp__greatpages__criar-landing-page`. Instalar a skill no cliente serve para o agente
-> ativá-la sozinho quando você pedir uma landing page, antes mesmo de chamar o MCP.
-
 ## Instalar a skill
 
 **Com a CLI `skills`** (Claude Code, Cursor, Codex, Copilot, Windsurf e outros):

@@ -90,10 +90,6 @@ Se nenhuma estiver disponível, o MCP não está conectado ou a permissão foi n
 consentimento. Oriente a pessoa com [references/mcp-setup.md](references/mcp-setup.md) e
 continue depois. Em produção a URL é `https://mcp.greatpages.com.br/mcp`.
 
-O próprio servidor MCP serve esta skill: o prompt `criar-landing-page` devolve este texto com
-as referências embutidas, e os resources `greatpages://skill/landing-page/...` trazem cada
-arquivo, templates inclusive. Se você chegou aqui por ele, já tem tudo.
-
 ## 3. Projeto
 
 Chame `projects_list`, apresente os projetos por nome e id e pergunte onde a página fica. Se
