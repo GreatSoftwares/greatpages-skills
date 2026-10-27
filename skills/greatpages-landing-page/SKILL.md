@@ -3,7 +3,7 @@ name: greatpages-landing-page
 description: Cria, refaz, ajusta e avalia landing pages de alta conversão e publica no GreatPages pelo MCP. Cobre captura de leads, vendas, serviço local com WhatsApp, evento, lançamento e institucional de uma página. Entrega HTML completo com formulário que vira lead, botão que conta conversão, SEO no head, domínio próprio ou subdomínio gratuito, e instala e conecta o MCP do GreatPages sozinha quando ele não está no cliente. Use sempre que pedirem para criar, montar, publicar, hospedar, refazer, melhorar ou avaliar uma landing page, página de vendas, página de captura, página de lançamento, site de uma página ou "uma página no GreatPages", mesmo sem citar a plataforma. Also triggers in English for landing page, sales page, squeeze page, lead capture page, one-page site, publish or host a page.
 metadata:
   author: GreatPages
-  version: 2.1.0
+  version: 2.2.0
   mcp: https://mcp.greatpages.com.br/mcp
 ---
 
@@ -53,7 +53,7 @@ tirar o que compete com a mensagem, não deixar tudo cinza.
 | 3 | Projeto | `projects_list` e perguntar em qual projeto a página fica. Nunca escolher sozinha. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 4 | Direção | Derivar o mundo visual do público, escrever o contrato de direção, escrever a copy inteira. | [references/direcao.md](references/direcao.md), [references/copy-e-secoes.md](references/copy-e-secoes.md) |
 | 5 | Construção | Montar o site no piso de qualidade e no contrato da plataforma, com fotografia e ícones. | [references/design.md](references/design.md), [references/html-rules.md](references/html-rules.md), [references/icones.md](references/icones.md) |
-| 6 | Crítica | Olhar o resultado renderizado em desktop e celular, pontuar, corrigir em um lote, olhar de novo. | [references/critica.md](references/critica.md) |
+| 6 | Crítica | Olhar o resultado renderizado em desktop e celular, pontuar, medir performance, corrigir em um lote, olhar de novo. | [references/critica.md](references/critica.md), [references/performance.md](references/performance.md) |
 | 7 | Import e publish | `pages_import_html`, ler o `report`, `pages_publish`. Primeira publicação sai direto. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 8 | Domínio | Domínio próprio: `domains_create`, orientar DNS, `domains_ssl_refresh`, republicar com `id_domain`. | [references/mcp-workflow.md](references/mcp-workflow.md#domínio) |
 | 9 | Entrega | URL, onde ver leads e visitas, o que é provisório, convite para ajustes. | [Entrega](#9-entrega) |
@@ -76,14 +76,19 @@ Ajustes depois do import seguem `pages_html_get` (anotar `revision`) → editar 
    (claude.ai), tudo num `index.html` só, com CSS em `<style>`.
 7. **Prefira zero `<script>`.** FAQ com `<details>`, animação com CSS, menu por âncora. Sem
    código executável o sync nunca pede confirmação extra.
-8. **Fontes pelo `@import` do Google Fonts no topo do CSS.** Nada de `<link>` para host
-   externo nem CDN de JS ou CSS; `<link rel="stylesheet" href="css/style.css">` para o
-   arquivo do próprio site é o esperado.
-9. **Claims são da pessoa, conteúdo é seu.** Nunca invente preço, cliente, número, depoimento,
+8. **Fontes próprias no .zip quando há terminal** (`woff2` em `fonts/`, `@font-face` com
+   `font-display: swap`); `@import` do Google Fonts no topo do CSS só sem terminal. Nada de
+   `<link>` para host externo nem CDN de JS ou CSS; `<link rel="stylesheet"
+   href="css/style.css">` para o arquivo do próprio site é o esperado.
+9. **Orçamento de performance.** Hero até 200 KB, demais imagens até 120 KB em `webp`, página
+   até 1,5 MB, CSS até 60 KB, zero JS por padrão, LCP até 2,5 s, CLS até 0,1. Medido antes de
+   entregar, com Lighthouse quando houver navegador. A régua está em
+   [references/performance.md](references/performance.md).
+10. **Claims são da pessoa, conteúdo é seu.** Nunca invente preço, cliente, número, depoimento,
    selo ou prazo. Tudo o mais (títulos, textos, nomes de seção, dados de demonstração
    rotulados) você escreve em fidelidade total. Seção vazia não existe; placeholder no ar
    também não.
-10. **Página seca é falha.** Texto sobre fundo liso, seção após seção, não é "limpo", é
+11. **Página seca é falha.** Texto sobre fundo liso, seção após seção, não é "limpo", é
     inacabado. Toda página entrega, no mínimo: um campo de cor ou imagem que ocupa a tela
     inteira em algum ponto; fotografia real em pelo menos três seções (da pessoa ou de banco
     de imagens livre, marcada como provisória); o grafismo de assinatura aparecendo três
@@ -93,11 +98,11 @@ Ajustes depois do import seguem `pages_html_get` (anotar `revision`) → editar 
     parágrafo acima de 45. A régua está em
     [references/design.md](references/design.md#riqueza-mínima) e o orçamento em
     [references/copy-e-secoes.md](references/copy-e-secoes.md#orçamento-de-palavras).
-11. **Uma ação por página.** O CTA primário aparece no hero, depois da prova e no fim, sempre
+12. **Uma ação por página.** O CTA primário aparece no hero, depois da prova e no fim, sempre
     igual. Ação secundária é link de texto, nunca segundo botão de destaque.
-12. **Respeite os limites.** `html` até 2.000.000 de caracteres, .zip até 25 MB, imagem até
+13. **Respeite os limites.** `html` até 2.000.000 de caracteres, .zip até 25 MB, imagem até
     10 MB, até 500 arquivos. Sem `data:` URI de imagem grande.
-13. **Fale a língua da pessoa.** Copy, mensagens e explicações em português do Brasil, com a
+14. **Fale a língua da pessoa.** Copy, mensagens e explicações em português do Brasil, com a
     tipografia certa (aspas curvas, reticências de um caractere), salvo pedido contrário.
 
 ## 1. Brief
@@ -202,14 +207,15 @@ Checklist mecânico antes de sair da construção:
   `type="tel"`, `required`, `data-gp-conversao="true"`, `data-gp-apos-envio` e
   `data-gp-mensagem` ou `data-gp-redirect`, aviso de consentimento.
 - `data-conversao="true"` no WhatsApp, `tel:`, checkout ou agenda.
-- Fontes por `@import` no topo do CSS; só os pesos usados; `display=swap`.
+- Fontes próprias em `fonts/` com `@font-face` e `font-display: swap` (ou `@import` sem terminal); só os pesos usados.
 - Imagens com `alt`, `width`, `height`; `loading="lazy"` fora da primeira dobra;
   `fetchpriority="high"` na do hero; arquivos em `img/` com caminho relativo, ou URLs https
   absolutas sem terminal. Nenhuma `<img>` quebrada.
-- Riqueza mínima da regra 10: campo de tela inteira, fotografia em três seções, assinatura
+- Riqueza mínima da regra 11: campo de tela inteira, fotografia em três seções, assinatura
   três vezes, display em dois momentos além do hero, fundos alternando, um movimento.
 - Ícones do sprite de [references/icones.md](references/icones.md) em benefícios, passos,
   contato e botões de WhatsApp e ligar. Nunca emoji.
+- Orçamento de performance da regra 9 conferido: pesos de imagem, fontes, CSS, requisições.
 - Grid e flex com `min-width: 0` nos filhos. Sem rolagem horizontal em 360px.
 - `:focus-visible` em tudo clicável. `prefers-reduced-motion` desligando entradas.
 - Nenhum `[PLACEHOLDER]`, `href="#"` em CTA, `<iframe>`, `<base>`, `on*=` ou `javascript:`.

@@ -83,6 +83,7 @@ skills/greatpages-landing-page/
 │   ├── design.md                 piso de qualidade: tipografia, cor, espaço, layout, controles, movimento
 │   ├── copy-e-secoes.md          dados de conversão, orçamento de palavras, primeira tela, CTA, prova, estruturas
 │   ├── icones.md                 sprite SVG pronto (Lucide e Simple Icons) e onde ícone entra
+│   ├── performance.md            orçamento de LCP, CLS, peso, imagens, fontes próprias, como medir
 │   └── critica.md                os quatro testes, nota por critério, piso mecânico, relatório de avaliação
 ```
 
