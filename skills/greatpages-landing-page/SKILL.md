@@ -52,7 +52,7 @@ tirar o que compete com a mensagem, não deixar tudo cinza.
 | 2 | Conexão | Confirmar o MCP `greatpages`. Se não estiver, instalar você mesma e disparar o login. | [references/mcp-setup.md](references/mcp-setup.md) |
 | 3 | Projeto | `projects_list` e perguntar em qual projeto a página fica. Nunca escolher sozinha. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 4 | Direção | Derivar o mundo visual do público, escrever o contrato de direção, escrever a copy inteira. | [references/direcao.md](references/direcao.md), [references/copy-e-secoes.md](references/copy-e-secoes.md) |
-| 5 | Construção | Escrever o `index.html` no piso de qualidade e no contrato da plataforma. | [references/design.md](references/design.md), [references/html-rules.md](references/html-rules.md) |
+| 5 | Construção | Montar o site no piso de qualidade e no contrato da plataforma, com fotografia e ícones. | [references/design.md](references/design.md), [references/html-rules.md](references/html-rules.md), [references/icones.md](references/icones.md) |
 | 6 | Crítica | Olhar o resultado renderizado em desktop e celular, pontuar, corrigir em um lote, olhar de novo. | [references/critica.md](references/critica.md) |
 | 7 | Import e publish | `pages_import_html`, ler o `report`, `pages_publish`. Primeira publicação sai direto. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 8 | Domínio | Domínio próprio: `domains_create`, orientar DNS, `domains_ssl_refresh`, republicar com `id_domain`. | [references/mcp-workflow.md](references/mcp-workflow.md#domínio) |
@@ -71,19 +71,33 @@ Ajustes depois do import seguem `pages_html_get` (anotar `revision`) → editar 
    `pages_html_conversions_get`.
 4. **SEO e compartilhamento vêm do `<head>`.** `<title>`, `meta description`, `og:*`.
 5. **Página de uma rota só.** O site é o `index.html`. Navegação por âncora.
-6. **Prefira zero `<script>`.** FAQ com `<details>`, animação com CSS, menu por âncora. Sem
-   código executável o sync nunca pede confirmação extra. JS só quando o pedido exige, inline.
-7. **Fontes pelo `@import` do Google Fonts dentro de `<style>`.** Nada de `<link>` para CSS
-   nem CDN de JS ou CSS.
-8. **Claims são da pessoa, conteúdo é seu.** Nunca invente preço, cliente, número, depoimento,
+6. **Site organizado em arquivos, quando há terminal.** `index.html`, `css/style.css`,
+   `img/` com as imagens, e `js/main.js` só se o pedido exigir JS. Vai como .zip. Sem terminal
+   (claude.ai), tudo num `index.html` só, com CSS em `<style>`.
+7. **Prefira zero `<script>`.** FAQ com `<details>`, animação com CSS, menu por âncora. Sem
+   código executável o sync nunca pede confirmação extra.
+8. **Fontes pelo `@import` do Google Fonts no topo do CSS.** Nada de `<link>` para host
+   externo nem CDN de JS ou CSS; `<link rel="stylesheet" href="css/style.css">` para o
+   arquivo do próprio site é o esperado.
+9. **Claims são da pessoa, conteúdo é seu.** Nunca invente preço, cliente, número, depoimento,
    selo ou prazo. Tudo o mais (títulos, textos, nomes de seção, dados de demonstração
    rotulados) você escreve em fidelidade total. Seção vazia não existe; placeholder no ar
    também não.
-9. **Uma ação por página.** O CTA primário aparece no hero, depois da prova e no fim, sempre
-   igual. Ação secundária é link de texto, nunca segundo botão de destaque.
-10. **Respeite os limites.** `html` até 2.000.000 de caracteres, .zip até 25 MB, imagem até
+10. **Página seca é falha.** Texto sobre fundo liso, seção após seção, não é "limpo", é
+    inacabado. Toda página entrega, no mínimo: um campo de cor ou imagem que ocupa a tela
+    inteira em algum ponto; fotografia real em pelo menos três seções (da pessoa ou de banco
+    de imagens livre, marcada como provisória); o grafismo de assinatura aparecendo três
+    vezes; display grande em pelo menos dois momentos além do hero; variação de densidade e
+    de fundo entre seções vizinhas; um momento de movimento autoral. E texto dentro do
+    orçamento: 500 palavras numa página de serviço ou captura, 1.200 numa de vendas, nenhum
+    parágrafo acima de 45. A régua está em
+    [references/design.md](references/design.md#riqueza-mínima) e o orçamento em
+    [references/copy-e-secoes.md](references/copy-e-secoes.md#orçamento-de-palavras).
+11. **Uma ação por página.** O CTA primário aparece no hero, depois da prova e no fim, sempre
+    igual. Ação secundária é link de texto, nunca segundo botão de destaque.
+12. **Respeite os limites.** `html` até 2.000.000 de caracteres, .zip até 25 MB, imagem até
     10 MB, até 500 arquivos. Sem `data:` URI de imagem grande.
-11. **Fale a língua da pessoa.** Copy, mensagens e explicações em português do Brasil, com a
+13. **Fale a língua da pessoa.** Copy, mensagens e explicações em português do Brasil, com a
     tipografia certa (aspas curvas, reticências de um caractere), salvo pedido contrário.
 
 ## 1. Brief
@@ -154,10 +168,26 @@ headline, subheadline, CTA, cada seção, FAQ, rodapé, mensagem pós-envio, `<t
 
 ## 5. Construção
 
-Monte o `index.html` com [references/design.md](references/design.md) como piso de qualidade
-e [references/html-rules.md](references/html-rules.md) como contrato da plataforma: esqueleto
+Monte o site com [references/design.md](references/design.md) como piso de qualidade e
+[references/html-rules.md](references/html-rules.md) como contrato da plataforma: esqueleto
 do `<head>`, formulário que vira lead e botão que conta conversão estão lá prontos para copiar.
-Tudo num arquivo: HTML, CSS em `<style>` e, só se o pedido exigir, JS inline.
+
+Com terminal, uma pasta de site:
+
+```
+site/
+├── index.html          só estrutura e conteúdo; <link rel="stylesheet" href="css/style.css">
+├── css/style.css       @import das fontes no topo, variáveis em :root, todo o CSS
+├── img/                fotos, logo em svg, grafismo em svg; nomes descritivos
+└── js/main.js          só se o pedido exigir JS; senão a pasta não existe
+```
+
+Sem terminal (claude.ai), um `index.html` só, com o CSS em `<style>` e as imagens por URL.
+
+Imagens: as que a pessoa mandou vão em `img/` (`webp` ou `avif`, hero até 200 KB). Quando
+ela ainda não mandou, não deixe a página sem fotografia: busque imagens de licença livre
+(Unsplash ou Pexels) do assunto específico, não da categoria, baixe para `img/`, e diga na
+entrega quais são provisórias. Sem terminal, use a URL direta da imagem.
 
 Construa com compromisso total com o contrato de direção. A versão "segura" da direção é o
 risco conhecido: uma página que poderia ser de qualquer marca da categoria falhou, por mais
@@ -172,9 +202,14 @@ Checklist mecânico antes de sair da construção:
   `type="tel"`, `required`, `data-gp-conversao="true"`, `data-gp-apos-envio` e
   `data-gp-mensagem` ou `data-gp-redirect`, aviso de consentimento.
 - `data-conversao="true"` no WhatsApp, `tel:`, checkout ou agenda.
-- Fontes por `@import`; só os pesos usados; `display=swap`.
+- Fontes por `@import` no topo do CSS; só os pesos usados; `display=swap`.
 - Imagens com `alt`, `width`, `height`; `loading="lazy"` fora da primeira dobra;
-  `fetchpriority="high"` na do hero; URLs https absolutas ou arquivos no .zip.
+  `fetchpriority="high"` na do hero; arquivos em `img/` com caminho relativo, ou URLs https
+  absolutas sem terminal. Nenhuma `<img>` quebrada.
+- Riqueza mínima da regra 10: campo de tela inteira, fotografia em três seções, assinatura
+  três vezes, display em dois momentos além do hero, fundos alternando, um movimento.
+- Ícones do sprite de [references/icones.md](references/icones.md) em benefícios, passos,
+  contato e botões de WhatsApp e ligar. Nunca emoji.
 - Grid e flex com `min-width: 0` nos filhos. Sem rolagem horizontal em 360px.
 - `:focus-visible` em tudo clicável. `prefers-reduced-motion` desligando entradas.
 - Nenhum `[PLACEHOLDER]`, `href="#"` em CTA, `<iframe>`, `<base>`, `on*=` ou `javascript:`.
@@ -190,9 +225,10 @@ rodadas é o teto; o que sobrar vai para a pessoa como lista honesta, não como 
 
 ## 7. Import e publish
 
-Com terminal e arquivos próprios (imagens, fontes): .zip com `index.html` na raiz,
-`pages_upload_start`, `curl --fail-with-body -T site.zip "<upload_url>"`, `pages_import_html`
-com `upload_id`. Página de um arquivo só, ou sem terminal: texto direto em `html`.
+Com terminal: entre na pasta do site e compacte com o `index.html` na raiz do zip
+(`cd site && zip -r ../site.zip .`), `pages_upload_start`,
+`curl --fail-with-body -T site.zip "<upload_url>"`, `pages_import_html` com `upload_id`. As
+imagens do zip vão para a galeria da conta. Sem terminal: texto do `index.html` em `html`.
 
 Leia o `report`: `forms[]` com `key` e `enabled`; `unresolved[]` com referências quebradas;
 `images.pending`. Formulário `enabled: false` tem `reason` e precisa de correção antes de

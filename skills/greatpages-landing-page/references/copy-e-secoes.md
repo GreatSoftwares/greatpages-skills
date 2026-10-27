@@ -41,6 +41,29 @@ páginas), para orientar decisões, não para citar na página:
   bem-estar e educação; enérgico em eventos e lançamentos. A energia da página não é a
   energia do produto: um serviço calmo pode ter uma página vibrante.
 
+## Orçamento de palavras
+
+A página é vista, não lida. O visitante escaneia títulos, números, botões e imagens, e lê um
+parágrafo só quando já decidiu quase tudo. Texto demais é o sintoma mais comum de página
+gerada: o modelo escreve o que sabe em vez de mostrar o que importa.
+
+| Bloco | Máximo |
+|-------|--------|
+| Headline | 12 palavras |
+| Subheadline | 25 palavras |
+| Parágrafo de corpo | 45 palavras, 3 linhas no celular |
+| Item de lista, card, passo | 20 palavras |
+| Depoimento | 40 palavras |
+| Resposta de FAQ | 60 palavras |
+| Página inteira, serviço local ou captura | 500 palavras |
+| Página inteira, evento ou institucional | 700 palavras |
+| Página inteira, vendas | 1.200 palavras |
+
+Quando uma seção passa do orçamento, não corte adjetivos: troque o parágrafo por um número
+grande, uma foto com legenda de uma linha, uma lista de três itens, uma citação em display.
+Cada seção carrega uma ideia e um material visual; o texto é a legenda do material, não o
+material.
+
 ## Primeira tela: a fórmula
 
 Cinco elementos, legíveis em cinco segundos, em celular:
