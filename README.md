@@ -1,67 +1,76 @@
 # GreatPages Skills
 
-Skills para agentes de IA criarem e publicarem páginas no [GreatPages](https://greatpages.com.br),
-a plataforma de landing pages com hospedagem, leads, conversões, testes A/B e domínio.
+Skills para agentes de IA (Claude Code, claude.ai, Cursor, Codex, GitHub Copilot, Windsurf e
+outros) criarem e publicarem landing pages no [GreatPages](https://greatpages.com.br). Você
+instala a skill; o agente desenha, escreve, publica e, se precisar, instala o MCP do
+GreatPages sozinho.
 
-Uma skill é uma pasta com um `SKILL.md` no formato aberto [Agent Skills](https://agentskills.io):
-o agente lê e passa a saber fazer a tarefa do jeito certo. Funciona em Claude Code, claude.ai,
-Cursor, Codex, GitHub Copilot, Windsurf e qualquer outro cliente compatível.
+## Instalar
 
-| Skill | O que faz |
-|-------|-----------|
-| [`greatpages-landing-page`](skills/greatpages-landing-page/SKILL.md) | Cria, refaz, ajusta e avalia landing pages de alta conversão e publica no GreatPages pelo MCP. Deriva a identidade visual do público em vez do visual padrão de IA, escreve a copy inteira antes do HTML, critica o resultado com nota antes de publicar, e entrega formulário que vira lead, WhatsApp contado como conversão, SEO no `<head>` e domínio. |
-
-## Como funciona
-
-Você instala a skill; o resto o agente faz. As skills agem na sua conta pelo
-[servidor MCP oficial do GreatPages](https://mcp.greatpages.com.br/mcp), e a própria skill
-instala o MCP no seu cliente quando ele ainda não está lá: no Claude Code é um comando, no
-Cursor e no VS Code é uma entrada no arquivo de MCP. Não há token para copiar: na primeira
-chamada o navegador abre, você faz login no GreatPages e escolhe as permissões.
-
-Precisa de uma conta GreatPages; a gratuita publica em subdomínio gratuito. Para conectar o
-MCP por conta própria ou em outro cliente, veja
-[references/mcp-setup.md](skills/greatpages-landing-page/references/mcp-setup.md).
-
-## Instalar a skill
-
-**Com a CLI `skills`** (Claude Code, Cursor, Codex, Copilot, Windsurf e outros):
+O jeito mais rápido, em qualquer cliente compatível com [Agent Skills](https://agentskills.io):
 
 ```bash
 npx skills add GreatSoftwares/greatpages-skills
 ```
 
-**Claude Code, como plugin:**
+Depois é só pedir uma landing page ao agente. Se o MCP do GreatPages ainda não estiver
+conectado, a skill instala e abre o login no navegador. Precisa de uma conta GreatPages; a
+gratuita publica em subdomínio gratuito.
+
+### Por cliente
+
+**Claude Code**, para todos os projetos, como plugin:
 
 ```
 /plugin marketplace add GreatSoftwares/greatpages-skills
 /plugin install greatpages@greatpages-skills
 ```
 
-**Claude Code, cópia manual** (todos os projetos ou só o atual):
+Ou copiando a pasta (em `~/.claude/skills/` vale para todos os projetos; em `.claude/skills/`
+só para o projeto atual):
 
 ```bash
 git clone https://github.com/GreatSoftwares/greatpages-skills.git
-cp -R greatpages-skills/skills/greatpages-landing-page ~/.claude/skills/     # ou .claude/skills/
+cp -R greatpages-skills/skills/greatpages-landing-page ~/.claude/skills/
 ```
 
-**claude.ai:** Settings → Capabilities → Skills → enviar a pasta `skills/greatpages-landing-page`
-compactada em .zip.
+**Cursor:** `npx skills add GreatSoftwares/greatpages-skills` no projeto, ou copie a pasta
+`skills/greatpages-landing-page` para `.cursor/skills/`.
 
-**Outros clientes:** copie a pasta para o diretório de skills do cliente (`.cursor/skills/`,
-`.codex/skills/`, `.github/skills/`).
+**Codex:** copie a pasta para `.codex/skills/`.
 
-## Usar
+**GitHub Copilot:** copie a pasta para `.github/skills/`.
 
-Peça ao agente algo como:
+**claude.ai:** compacte a pasta `skills/greatpages-landing-page` em .zip e envie em
+Settings → Capabilities → Skills. No claude.ai não há terminal, então o MCP você conecta
+por conta própria: Settings → Connectors → Add custom connector →
+`https://mcp.greatpages.com.br/mcp`.
+
+**Outros clientes:** copie a pasta para o diretório de skills do cliente.
+
+### Conferir
+
+Peça ao agente: "Crie uma landing page para [seu negócio]". Ele deve começar pelo brief
+(poucas perguntas), conectar o MCP se faltar, perguntar em qual projeto a página fica e
+seguir até a URL publicada. Para conectar o MCP por conta própria em qualquer cliente, veja
+[references/mcp-setup.md](skills/greatpages-landing-page/references/mcp-setup.md).
+
+## O que a skill faz
+
+| Skill | O que faz |
+|-------|-----------|
+| [`greatpages-landing-page`](skills/greatpages-landing-page/SKILL.md) | Cria, refaz, ajusta e avalia landing pages de alta conversão e publica no GreatPages pelo MCP. Deriva a identidade visual do público em vez do visual padrão de IA, escreve a copy inteira antes do HTML, critica o resultado com nota antes de publicar, e entrega formulário que vira lead, WhatsApp contado como conversão, SEO no `<head>` e domínio. |
+
+Exemplo de pedido:
 
 > Quero uma página para minha clínica de fisioterapia em Sorocaba, para a pessoa agendar pelo WhatsApp.
 
-A skill guia o agente por brief, projeto, design e copy, HTML, import, publicação e domínio, e
-devolve a URL no ar. Ajustes depois seguem o ciclo ler → editar → sincronizar → republicar,
-sempre com a sua confirmação antes de mudar o que está no ar.
+A skill guia o agente por brief, projeto, direção visual e copy, HTML, crítica, import,
+publicação e domínio, e devolve a URL no ar. Ajustes depois seguem o ciclo ler → editar →
+sincronizar → republicar, sempre com a sua confirmação antes de mudar o que está no ar.
+"Avalie essa página" devolve um relatório com nota, sem alterar nada.
 
-## O que tem na skill
+## Estrutura
 
 ```
 skills/greatpages-landing-page/
