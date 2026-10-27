@@ -24,16 +24,20 @@ e respeita este contrato.
   <meta property="og:image" content="https://.../capa-1200x630.jpg">
   <meta property="og:url" content="https://www.exemplo.com.br/">
   <meta name="twitter:card" content="summary_large_image">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600&display=swap');
-    :root { --cor-1: #0f3d3e; --cor-2: #f4efe6; --destaque: #e4572e; }
-    /* todo o CSS aqui */
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- sem terminal (claude.ai): no lugar do link, <style> com o CSS inteiro, @import na primeira linha -->
 </head>
 <body>
   <!-- seções -->
 </body>
 </html>
+```
+
+E o começo de `css/style.css`:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&display=swap');
+:root { --ground: #f4f6f8; --ink: #15181d; --brand: #0d5c63; --brand-ink: #f4f6f8; --accent: #ff6b35; --accent-ink: #1a0b05; --line: #d9dee3; }
 ```
 
 SEO e compartilhamento social vêm **só** do `<head>`. `pages_update` recusa `seo_*` e
@@ -50,7 +54,8 @@ SEO e compartilhamento social vêm **só** do `<head>`. `pages_update` recusa `s
 | `<details>/<summary>`, `<dialog>` sem JS, animações CSS | Permitido | Preferido a JS. |
 | `<link rel="icon">`, `rel="canonical"`, `rel="alternate"`, `apple-touch-icon` | Permitido | |
 | `<script>` inline ou arquivo do .zip | Marcado | Importa, mas no sync entrar com script novo exige confirmação da pessoa. Vai no arquivo publicado e o suporte não desliga. |
-| `<link rel="stylesheet">`, `rel="preconnect"`, `rel="preload"` | Marcado | Mesma regra do script. Use `@import` para fontes e `<style>` para o resto. |
+| `<link rel="stylesheet" href="css/style.css">` para arquivo do próprio .zip | Permitido na prática | Marcado como código, mas o import aceita e o sync só pergunta se um `<link>` novo entrar. É o jeito normal de organizar o site. |
+| `<link rel="stylesheet">` para host externo, `rel="preconnect"`, `rel="preload"` | Marcado | Fontes por `@import` no CSS; nenhum CSS de CDN. |
 | `<iframe>` (vídeo do YouTube, mapa) | Marcado | Aceito, mas pede confirmação no sync. Avalie se um link com imagem de capa resolve. |
 | `on*=` (onclick, onload...) e `href="javascript:..."` | Marcado | Evite. |
 | `<meta http-equiv>`, `<base>`, `<object>`, `<embed>` | Marcado | Evite. |
@@ -66,6 +71,24 @@ verdadeiro, calculadora, vídeo embutido).
 
 Pixel do Facebook, GTM e Analytics são configurados no painel da página, não no HTML. Não
 cole snippets de rastreamento no HTML: a plataforma injeta os dela.
+
+## Estrutura do site no .zip
+
+```
+site/
+├── index.html
+├── css/style.css        @import url('https://fonts.googleapis.com/...') na primeira linha
+├── img/hero.webp        caminhos relativos no HTML e no CSS (url('../img/textura.svg'))
+├── img/logo.svg
+└── js/main.js           só quando o pedido exige JS
+```
+
+O `index.html` fica na raiz do zip (`cd site && zip -r ../site.zip .`). Os arquivos ficam
+como vieram; o import só acrescenta a chave dos formulários. Pastas e nomes são livres,
+exceto `_gp/`, que é da plataforma. CSS e JS do zip são servidos junto com a página; imagens
+png, jpg, gif, webp e avif vão também para a galeria da conta, e svg fica como arquivo.
+
+Sem terminal, não há zip: um `index.html` com o CSS em `<style>` e imagens por URL https.
 
 ## Limites
 
