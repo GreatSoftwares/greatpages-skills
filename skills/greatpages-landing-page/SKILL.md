@@ -52,7 +52,7 @@ tirar o que compete com a mensagem, não deixar tudo cinza.
 | 2 | Conexão | Confirmar o MCP `greatpages`. Se não estiver, instalar você mesma e disparar o login. | [references/mcp-setup.md](references/mcp-setup.md) |
 | 3 | Projeto | `projects_list` e perguntar em qual projeto a página fica. Nunca escolher sozinha. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 4 | Direção | Derivar o mundo visual do público, escrever o contrato de direção, escrever a copy inteira. | [references/direcao.md](references/direcao.md), [references/copy-e-secoes.md](references/copy-e-secoes.md) |
-| 5 | Construção | Escrever o `index.html` no piso de qualidade e no contrato da plataforma. | [references/design.md](references/design.md), [references/html-rules.md](references/html-rules.md) |
+| 5 | Construção | Montar o site no piso de qualidade e no contrato da plataforma, com fotografia e ícones. | [references/design.md](references/design.md), [references/html-rules.md](references/html-rules.md), [references/icones.md](references/icones.md) |
 | 6 | Crítica | Olhar o resultado renderizado em desktop e celular, pontuar, corrigir em um lote, olhar de novo. | [references/critica.md](references/critica.md) |
 | 7 | Import e publish | `pages_import_html`, ler o `report`, `pages_publish`. Primeira publicação sai direto. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 8 | Domínio | Domínio próprio: `domains_create`, orientar DNS, `domains_ssl_refresh`, republicar com `id_domain`. | [references/mcp-workflow.md](references/mcp-workflow.md#domínio) |
@@ -208,6 +208,8 @@ Checklist mecânico antes de sair da construção:
   absolutas sem terminal. Nenhuma `<img>` quebrada.
 - Riqueza mínima da regra 10: campo de tela inteira, fotografia em três seções, assinatura
   três vezes, display em dois momentos além do hero, fundos alternando, um movimento.
+- Ícones do sprite de [references/icones.md](references/icones.md) em benefícios, passos,
+  contato e botões de WhatsApp e ligar. Nunca emoji.
 - Grid e flex com `min-width: 0` nos filhos. Sem rolagem horizontal em 360px.
 - `:focus-visible` em tudo clicável. `prefers-reduced-motion` desligando entradas.
 - Nenhum `[PLACEHOLDER]`, `href="#"` em CTA, `<iframe>`, `<base>`, `on*=` ou `javascript:`.

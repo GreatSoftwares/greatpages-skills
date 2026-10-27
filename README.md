@@ -81,8 +81,9 @@ skills/greatpages-landing-page/
 │   ├── html-rules.md             o HTML que a plataforma aceita: forms que viram lead, conversão, limites
 │   ├── direcao.md                de onde vem o visual: mundo do público, rut recusado, cor, tipo, contrato
 │   ├── design.md                 piso de qualidade: tipografia, cor, espaço, layout, controles, movimento
-│   ├── copy-e-secoes.md          dados de conversão, primeira tela, CTA, prova, estruturas por objetivo
-│   └── critica.md                os três testes, nota por critério, piso mecânico, relatório de avaliação
+│   ├── copy-e-secoes.md          dados de conversão, orçamento de palavras, primeira tela, CTA, prova, estruturas
+│   ├── icones.md                 sprite SVG pronto (Lucide e Simple Icons) e onde ícone entra
+│   └── critica.md                os quatro testes, nota por critério, piso mecânico, relatório de avaliação
 ```
 
 ## Contribuir

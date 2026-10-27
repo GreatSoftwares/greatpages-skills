@@ -135,6 +135,7 @@ Uma página passa neste piso ou volta para a construção. Conte, não sinta:
 | Momentos de display grande fora do hero (número, citação, fechamento) | 2 |
 | Seções vizinhas com o mesmo fundo e a mesma densidade | no máximo 2 seguidas |
 | Momento de movimento autoral | 1 |
+| Ícones de um conjunto só, em lista de benefícios, passos, contato e botões de canal ([icones.md](icones.md)) | onde houver esses blocos; emoji e glifo não contam |
 | Elementos de texto sobre fundo liso sem nenhum outro material por seção | 0 em hero, prova, oferta e fechamento |
 
 Página "seca" é a que falha em três linhas desta tabela. A correção não é adicionar sombra
