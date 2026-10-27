@@ -1,0 +1,11 @@
+{
+  "name": "greatpages",
+  "description": "Skills do GreatPages: cria landing pages bonitas e de alta conversão em HTML e publica na plataforma pelo MCP, com leads, conversões e domínio.",
+  "version": "1.0.0",
+  "author": {
+    "name": "GreatSoftwares"
+  },
+  "homepage": "https://github.com/GreatSoftwares/greatpages-skills",
+  "license": "MIT",
+  "keywords": ["greatpages", "landing-page", "mcp", "skill"]
+}
