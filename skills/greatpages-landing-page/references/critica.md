@@ -46,10 +46,15 @@ na média é "não publica ainda".
 | **Cor** | Estratégia nomeada; contraste medido; CTA dono da cor | Cinza sobre branco, gradiente roxo, cor da ação espalhada |
 | **Ritmo** | Denso e quieto alternando; mais espaço acima do título | Um espaçamento só; seções separadas por linha |
 | **Celular** | Sem rolagem horizontal; ação na primeira tela; alvos de 44px | Imagem empurra o CTA; título estoura; botão colado na borda |
+| **Performance** | Dentro do orçamento de [performance.md](performance.md): hero ≤ 200 KB, página ≤ 1,5 MB, fontes próprias, zero JS, Lighthouse celular ≥ 90 | Foto de 3 MB, fonte bloqueando o título, iframe, CSS de framework, layout pulando ao carregar |
 | **Copy** | Língua da pessoa, específica, nível de leitura simples, tipografia PT certa, dentro do orçamento de palavras | Jargão, "transformar sua vida", aspas retas, placeholder, parágrafos de 80 palavras, página de serviço com 1.000 palavras |
 | **Conversão GreatPages** | Formulário `enabled`, `data-conversao` nos cliques certos, SEO no head | Form sem `name`, `action` indevido, WhatsApp sem marca, sem `og:image` |
 
 ## Piso mecânico
+
+Antes dos itens abaixo, meça a performance: Lighthouse celular na URL ou no arquivo quando
+houver navegador; sem ele, tamanhos de arquivo e atributos de imagem na mão
+([performance.md](performance.md#medir)). Página fora do orçamento não publica.
 
 Confira cada item no CSS ou no render, não na memória:
 
