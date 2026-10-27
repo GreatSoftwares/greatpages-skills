@@ -9,7 +9,7 @@ Cursor, Codex, GitHub Copilot, Windsurf e qualquer outro cliente compatível.
 
 | Skill | O que faz |
 |-------|-----------|
-| [`greatpages-landing-page`](skills/greatpages-landing-page/SKILL.md) | Cria uma landing page bonita e de alta conversão em HTML e publica no GreatPages pelo MCP, com formulário que vira lead, WhatsApp contado como conversão, SEO no `<head>` e domínio próprio ou subdomínio gratuito. |
+| [`greatpages-landing-page`](skills/greatpages-landing-page/SKILL.md) | Cria, refaz, ajusta e avalia landing pages de alta conversão e publica no GreatPages pelo MCP. Deriva a identidade visual do público em vez do visual padrão de IA, escreve a copy inteira antes do HTML, critica o resultado com nota antes de publicar, e entrega formulário que vira lead, WhatsApp contado como conversão, SEO no `<head>` e domínio. |
 
 ## Como funciona
 
@@ -65,13 +65,15 @@ sempre com a sua confirmação antes de mudar o que está no ar.
 
 ```
 skills/greatpages-landing-page/
-├── SKILL.md                      fluxo, regras, checklists e exemplo
+├── SKILL.md                      modos (criar, refazer, ajustar, avaliar, publicar), fluxo, regras, exemplo
 ├── references/
-│   ├── mcp-setup.md              conectar o MCP em cada cliente
-│   ├── mcp-workflow.md           roteiro tool a tool: projeto, import, publish, domínio, A/B
-│   ├── html-rules.md             o HTML que a plataforma aceita: forms, conversão, limites
-│   ├── design.md                 hierarquia, tipografia, cor, espaçamento, responsivo
-│   └── copy-e-secoes.md          estrutura e copy por tipo de página, com dados de conversão
+│   ├── mcp-setup.md              instalar e conectar o MCP em cada cliente, feito pelo agente
+│   ├── mcp-workflow.md           roteiro tool a tool: projeto, import, publish, domínio, leads, A/B
+│   ├── html-rules.md             o HTML que a plataforma aceita: forms que viram lead, conversão, limites
+│   ├── direcao.md                de onde vem o visual: mundo do público, rut recusado, cor, tipo, contrato
+│   ├── design.md                 piso de qualidade: tipografia, cor, espaço, layout, controles, movimento
+│   ├── copy-e-secoes.md          dados de conversão, primeira tela, CTA, prova, estruturas por objetivo
+│   └── critica.md                os três testes, nota por critério, piso mecânico, relatório de avaliação
 ```
 
 ## Contribuir
