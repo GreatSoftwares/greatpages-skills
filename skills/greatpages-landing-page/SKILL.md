@@ -3,7 +3,7 @@ name: greatpages-landing-page
 description: Cria, refaz, ajusta e avalia landing pages de alta conversão e publica no GreatPages pelo MCP. Cobre captura de leads, vendas, serviço local com WhatsApp, evento, lançamento e institucional de uma página. Entrega HTML completo com formulário que vira lead, botão que conta conversão, SEO no head, domínio próprio ou subdomínio gratuito, e instala e conecta o MCP do GreatPages sozinha quando ele não está no cliente. Use sempre que pedirem para criar, montar, publicar, hospedar, refazer, melhorar ou avaliar uma landing page, página de vendas, página de captura, página de lançamento, site de uma página ou "uma página no GreatPages", mesmo sem citar a plataforma. Also triggers in English for landing page, sales page, squeeze page, lead capture page, one-page site, publish or host a page.
 metadata:
   author: GreatPages
-  version: 2.0.0
+  version: 2.1.0
   mcp: https://mcp.greatpages.com.br/mcp
 ---
 
