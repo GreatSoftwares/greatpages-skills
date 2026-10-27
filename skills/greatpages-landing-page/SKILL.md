@@ -27,7 +27,7 @@ GreatPages.
 | 2 | Conexão | Confirmar que o MCP `greatpages` está conectado. Se não, instalar você mesmo e disparar o login. | [references/mcp-setup.md](references/mcp-setup.md) |
 | 3 | Projeto | `projects_list` e perguntar em qual projeto a página fica. Nunca escolher sozinho. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 4 | Design e copy | Escolher direção estética, estrutura de seções e escrever a copy. | [references/design.md](references/design.md), [references/copy-e-secoes.md](references/copy-e-secoes.md) |
-| 5 | HTML | Escrever o `index.html` seguindo o contrato da plataforma. Partir de um template quando couber. | [references/html-rules.md](references/html-rules.md), [templates/](templates/) |
+| 5 | HTML | Escrever o `index.html` seguindo o contrato da plataforma. | [references/html-rules.md](references/html-rules.md) |
 | 6 | Importar | `pages_import_html` com `title`, `id_project` e `html` (ou `upload_id` do .zip). Ler o `report`. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 7 | Publicar | `pages_publish`. A primeira publicação sai direto. Devolver a URL. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 8 | Domínio | Se a pessoa quiser domínio próprio: `domains_create`, orientar DNS, `domains_ssl_refresh`, republicar com `id_domain`. | [references/mcp-workflow.md](references/mcp-workflow.md#domínio) |
@@ -70,7 +70,7 @@ que assumiu.
 Precisa saber:
 
 - **Objetivo da página:** capturar leads, vender, agendar pelo WhatsApp, inscrever em evento,
-  apresentar a empresa. Define o tipo de template e a métrica de sucesso.
+  apresentar a empresa. Define a estrutura da página e a métrica de sucesso.
 - **Quem é o público e qual dor resolve.** Uma frase basta.
 - **A oferta:** o que a pessoa ganha ao agir (ebook, consulta, desconto, vaga, produto) e, se
   houver, preço e condições.
@@ -126,10 +126,9 @@ garantias ou simplesmente omita a seção.
 
 ## 5. HTML
 
-Monte o `index.html` com as regras de [references/html-rules.md](references/html-rules.md).
-Os templates em [templates/](templates/) já cumprem o contrato e servem de ponto de partida
-(captura, vendas, serviço com WhatsApp, evento); troque paleta, fontes, copy, imagens e seções
-para a página não parecer um modelo.
+Monte o `index.html` do zero, com as regras de [references/html-rules.md](references/html-rules.md):
+o esqueleto do `<head>`, o formulário que vira lead e o botão que conta conversão estão lá
+prontos para copiar. Tudo num arquivo só: HTML, CSS em `<style>` e, só se precisar, JS inline.
 
 Checklist antes de importar:
 
@@ -149,16 +148,8 @@ Checklist antes de importar:
 - Nenhum `[PLACEHOLDER]`, `href="#"` em CTA, `<script>` desnecessário, `<iframe>`, `<base>`,
   `on*=` ou `javascript:`.
 
-Com terminal, rode o validador da skill antes de importar. Ele não tem dependências e aponta
-placeholder esquecido, SEO faltando, código marcado, formulário que não vira lead e WhatsApp
-sem codificar:
-
-```bash
-node scripts/check-html.mjs index.html
-```
-
-`ERRO` bloqueia o import; `AVISO` é para olhar. Depois abra a página num navegador: tag não
-fechada muda o layout no celular e nenhum validador pega tudo.
+Antes de importar, releia o arquivo contra o checklist acima e, com terminal, abra a página num
+navegador: tag não fechada muda o layout no celular.
 
 ## 6. Importar
 
@@ -208,8 +199,8 @@ pelo WhatsApp".
 
 Decisões antes do HTML:
 
-- **Tipo:** serviço local com WhatsApp. Template `servico-whatsapp.html`. Conversão: cliques
-  no `wa.me` com `data-conversao="true"`, mais `tel:`.
+- **Tipo:** serviço local com WhatsApp. Conversão: cliques no `wa.me` com
+  `data-conversao="true"`, mais `tel:`.
 - **Direção:** calorosa e limpa (saúde, confiança). Lora para títulos, Nunito Sans para texto.
   Off-white quente, verde-oliva de marca, terracota de destaque; o botão de WhatsApp fica no
   verde do WhatsApp para ser reconhecido.

@@ -72,21 +72,14 @@ skills/greatpages-landing-page/
 │   ├── html-rules.md             o HTML que a plataforma aceita: forms, conversão, limites
 │   ├── design.md                 hierarquia, tipografia, cor, espaçamento, responsivo
 │   └── copy-e-secoes.md          estrutura e copy por tipo de página, com dados de conversão
-├── scripts/
-│   └── check-html.mjs            validador sem dependências: node check-html.mjs index.html
-└── templates/
-    ├── captura.html              isca digital com formulário no hero
-    ├── vendas.html               página de vendas longa com checkout externo
-    ├── servico-whatsapp.html     serviço local com WhatsApp
-    └── evento.html               webinar ou evento com inscrição e programação
 ```
 
 ## Contribuir
 
-Issues e pull requests são bem-vindos: erro na referência, template novo, cliente que não
-está no guia de conexão. Mudanças no contrato do HTML (o que a plataforma aceita) vêm da
-equipe do GreatPages, porque espelham o código da plataforma.
+Issues e pull requests são bem-vindos: erro na referência, cliente que não está no guia de
+conexão, seção que falta no guia de copy. Mudanças no contrato do HTML (o que a plataforma
+aceita) vêm da equipe do GreatPages, porque espelham o código da plataforma.
 
 ## Licença
 
-[MIT](LICENSE). Os templates podem ser usados em qualquer página, no GreatPages ou fora dele.
+[MIT](LICENSE).
