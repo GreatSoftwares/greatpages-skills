@@ -11,18 +11,17 @@ Cursor, Codex, GitHub Copilot, Windsurf e qualquer outro cliente compatível.
 |-------|-----------|
 | [`greatpages-landing-page`](skills/greatpages-landing-page/SKILL.md) | Cria uma landing page bonita e de alta conversão em HTML e publica no GreatPages pelo MCP, com formulário que vira lead, WhatsApp contado como conversão, SEO no `<head>` e domínio próprio ou subdomínio gratuito. |
 
-## Antes de tudo: conectar o MCP do GreatPages
+## Como funciona
 
-As skills agem na sua conta pelo servidor MCP oficial. Não há token para copiar: na primeira
-chamada o agente abre o navegador, você faz login e escolhe as permissões.
+Você instala a skill; o resto o agente faz. As skills agem na sua conta pelo
+[servidor MCP oficial do GreatPages](https://mcp.greatpages.com.br/mcp), e a própria skill
+instala o MCP no seu cliente quando ele ainda não está lá: no Claude Code é um comando, no
+Cursor e no VS Code é uma entrada no arquivo de MCP. Não há token para copiar: na primeira
+chamada o navegador abre, você faz login no GreatPages e escolhe as permissões.
 
-```bash
-claude mcp add --scope user --transport http greatpages https://mcp.greatpages.com.br/mcp
-```
-
-Cursor, VS Code, claude.ai e os demais clientes estão em
-[skills/greatpages-landing-page/references/mcp-setup.md](skills/greatpages-landing-page/references/mcp-setup.md).
-Precisa de uma conta GreatPages; a gratuita publica em subdomínio gratuito.
+Precisa de uma conta GreatPages; a gratuita publica em subdomínio gratuito. Para conectar o
+MCP por conta própria ou em outro cliente, veja
+[references/mcp-setup.md](skills/greatpages-landing-page/references/mcp-setup.md).
 
 ## Instalar a skill
 

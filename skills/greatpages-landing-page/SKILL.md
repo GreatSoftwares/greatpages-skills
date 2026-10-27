@@ -1,6 +1,6 @@
 ---
 name: greatpages-landing-page
-description: Cria landing pages bonitas e de alta conversão (captura de leads, vendas, serviço local, evento, institucional de uma página) em HTML e publica no GreatPages pelo MCP, com formulário que vira lead, botão de WhatsApp contado como conversão, SEO no head e domínio próprio ou subdomínio gratuito. Use sempre que pedirem para criar, montar, publicar ou hospedar uma landing page, página de vendas, página de captura, página de lançamento, site de uma página ou "uma página no GreatPages". Also triggers in English for landing page, sales page, squeeze page, lead capture page, one-page site, publish or host a page.
+description: Cria landing pages bonitas e de alta conversão (captura de leads, vendas, serviço local, evento, institucional de uma página) em HTML e publica no GreatPages pelo MCP, com formulário que vira lead, botão de WhatsApp contado como conversão, SEO no head e domínio próprio ou subdomínio gratuito. Instala e conecta o MCP do GreatPages sozinha quando ele ainda não está no cliente. Use sempre que pedirem para criar, montar, publicar ou hospedar uma landing page, página de vendas, página de captura, página de lançamento, site de uma página ou "uma página no GreatPages". Also triggers in English for landing page, sales page, squeeze page, lead capture page, one-page site, publish or host a page.
 metadata:
   author: GreatPages
   version: 1.0.0
@@ -24,7 +24,7 @@ GreatPages.
 | # | Etapa | O que fazer | Referência |
 |---|-------|-------------|------------|
 | 1 | Brief | Entender objetivo, público, oferta, ação desejada e marca. Uma rodada de perguntas, no máximo cinco. | [Brief](#1-brief) |
-| 2 | Conexão | Confirmar que o MCP `greatpages` está conectado. Se não, orientar a conexão. | [references/mcp-setup.md](references/mcp-setup.md) |
+| 2 | Conexão | Confirmar que o MCP `greatpages` está conectado. Se não, instalar você mesmo e disparar o login. | [references/mcp-setup.md](references/mcp-setup.md) |
 | 3 | Projeto | `projects_list` e perguntar em qual projeto a página fica. Nunca escolher sozinho. | [references/mcp-workflow.md](references/mcp-workflow.md) |
 | 4 | Design e copy | Escolher direção estética, estrutura de seções e escrever a copy. | [references/design.md](references/design.md), [references/copy-e-secoes.md](references/copy-e-secoes.md) |
 | 5 | HTML | Escrever o `index.html` seguindo o contrato da plataforma. Partir de um template quando couber. | [references/html-rules.md](references/html-rules.md), [templates/](templates/) |
@@ -86,9 +86,18 @@ texto inventado.
 ## 2. Conexão com o MCP
 
 As tools começam com `pages_`, `projects_`, `domains_`, `leads_`, `analytics_` e `ab_tests_`.
-Se nenhuma estiver disponível, o MCP não está conectado ou a permissão foi negada no
-consentimento. Oriente a pessoa com [references/mcp-setup.md](references/mcp-setup.md) e
-continue depois. Em produção a URL é `https://mcp.greatpages.com.br/mcp`.
+Se nenhuma estiver disponível, o MCP não está instalado: **instale você mesmo**, seguindo
+[references/mcp-setup.md](references/mcp-setup.md). No Claude Code é um comando:
+
+```bash
+claude mcp add --scope user --transport http greatpages https://mcp.greatpages.com.br/mcp
+```
+
+Em Cursor, VS Code e afins é acrescentar a entrada `greatpages` no arquivo de MCP do cliente.
+Depois chame `projects_list`: o navegador abre para a pessoa fazer login e liberar as
+permissões, e você continua. Só no claude.ai, sem terminal, a pessoa adiciona o conector por
+conta própria, com as palavras que a referência dá. Se as tools existem mas estão faltando as
+de escrita ou publicação, a permissão foi desligada no consentimento: peça para reconectar.
 
 ## 3. Projeto
 
