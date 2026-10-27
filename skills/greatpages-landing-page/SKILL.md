@@ -88,8 +88,11 @@ Ajustes depois do import seguem `pages_html_get` (anotar `revision`) → editar 
     inteira em algum ponto; fotografia real em pelo menos três seções (da pessoa ou de banco
     de imagens livre, marcada como provisória); o grafismo de assinatura aparecendo três
     vezes; display grande em pelo menos dois momentos além do hero; variação de densidade e
-    de fundo entre seções vizinhas; um momento de movimento autoral. A régua está em
-    [references/design.md](references/design.md#riqueza-mínima).
+    de fundo entre seções vizinhas; um momento de movimento autoral. E texto dentro do
+    orçamento: 500 palavras numa página de serviço ou captura, 1.200 numa de vendas, nenhum
+    parágrafo acima de 45. A régua está em
+    [references/design.md](references/design.md#riqueza-mínima) e o orçamento em
+    [references/copy-e-secoes.md](references/copy-e-secoes.md#orçamento-de-palavras).
 11. **Uma ação por página.** O CTA primário aparece no hero, depois da prova e no fim, sempre
     igual. Ação secundária é link de texto, nunca segundo botão de destaque.
 12. **Respeite os limites.** `html` até 2.000.000 de caracteres, .zip até 25 MB, imagem até

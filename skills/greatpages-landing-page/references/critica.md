@@ -46,7 +46,7 @@ na média é "não publica ainda".
 | **Cor** | Estratégia nomeada; contraste medido; CTA dono da cor | Cinza sobre branco, gradiente roxo, cor da ação espalhada |
 | **Ritmo** | Denso e quieto alternando; mais espaço acima do título | Um espaçamento só; seções separadas por linha |
 | **Celular** | Sem rolagem horizontal; ação na primeira tela; alvos de 44px | Imagem empurra o CTA; título estoura; botão colado na borda |
-| **Copy** | Língua da pessoa, específica, nível de leitura simples, tipografia PT certa | Jargão, "transformar sua vida", aspas retas, placeholder |
+| **Copy** | Língua da pessoa, específica, nível de leitura simples, tipografia PT certa, dentro do orçamento de palavras | Jargão, "transformar sua vida", aspas retas, placeholder, parágrafos de 80 palavras, página de serviço com 1.000 palavras |
 | **Conversão GreatPages** | Formulário `enabled`, `data-conversao` nos cliques certos, SEO no head | Form sem `name`, `action` indevido, WhatsApp sem marca, sem `og:image` |
 
 ## Piso mecânico

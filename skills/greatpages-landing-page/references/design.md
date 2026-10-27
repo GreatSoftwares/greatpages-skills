@@ -108,6 +108,16 @@ manda em nada. Cada item é uma checagem sobre o resultado renderizado, não uma
   prato daquele tipo de cozinha), nunca da categoria ("negócios", "sucesso"). Uma foto
   decisiva vale mais que cinco medianas. Baixe para `img/`, nomeie, e liste na entrega como
   provisória. Nunca uma `<img>` quebrada no ar; nunca um bloco cinza "imagem aqui".
+- **Como buscar a foto, na prática.** Com acesso à web: abra a busca do Pexels
+  (`https://www.pexels.com/search/<termo em inglês>/`) ou do Unsplash
+  (`https://unsplash.com/s/photos/<termo>`) com um termo específico ("physiotherapy
+  session", "wood oven pizza", "mechanic hands engine"), escolha uma a três fotos que
+  mostrem o assunto de verdade, pegue a URL direta da imagem (no Pexels tem a forma
+  `https://images.pexels.com/photos/<id>/pexels-photo-<id>.jpeg?auto=compress&cs=tinysrgb&w=1600`;
+  no Unsplash, `https://images.unsplash.com/photo-<id>?w=1600&q=80`) e, com terminal, baixe
+  com `curl -L -o img/<nome>.jpg "<url>"`. As duas licenças permitem uso comercial sem
+  atribuição; diga à pessoa de onde veio cada foto. Sem terminal, use a URL direta no `src`.
+  Sem acesso à web, peça as fotos antes de construir: a página não sai sem fotografia.
 - Além da fotografia, a página tem material visual autoral: grafismo de assinatura em SVG
   inline, padrão em CSS (`repeating-linear-gradient`, `radial-gradient`, grade visível),
   número gigante que é dado real, citação em display, tabela de horários desenhada, mapa de
