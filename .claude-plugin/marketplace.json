@@ -1,0 +1,18 @@
+{
+  "name": "greatpages-skills",
+  "owner": {
+    "name": "GreatSoftwares"
+  },
+  "metadata": {
+    "description": "Skills do GreatPages para agentes de IA criarem e publicarem landing pages",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "greatpages",
+      "source": "./",
+      "description": "Cria landing pages bonitas e de alta conversão e publica no GreatPages pelo MCP",
+      "version": "1.0.0"
+    }
+  ]
+}
