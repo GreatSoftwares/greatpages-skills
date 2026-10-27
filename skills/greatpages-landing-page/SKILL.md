@@ -1,92 +1,118 @@
 ---
 name: greatpages-landing-page
-description: Cria landing pages bonitas e de alta conversão (captura de leads, vendas, serviço local, evento, institucional de uma página) em HTML e publica no GreatPages pelo MCP, com formulário que vira lead, botão de WhatsApp contado como conversão, SEO no head e domínio próprio ou subdomínio gratuito. Instala e conecta o MCP do GreatPages sozinha quando ele ainda não está no cliente. Use sempre que pedirem para criar, montar, publicar ou hospedar uma landing page, página de vendas, página de captura, página de lançamento, site de uma página ou "uma página no GreatPages". Also triggers in English for landing page, sales page, squeeze page, lead capture page, one-page site, publish or host a page.
+description: Cria, refaz, ajusta e avalia landing pages de alta conversão e publica no GreatPages pelo MCP. Cobre captura de leads, vendas, serviço local com WhatsApp, evento, lançamento e institucional de uma página. Entrega HTML completo com formulário que vira lead, botão que conta conversão, SEO no head, domínio próprio ou subdomínio gratuito, e instala e conecta o MCP do GreatPages sozinha quando ele não está no cliente. Use sempre que pedirem para criar, montar, publicar, hospedar, refazer, melhorar ou avaliar uma landing page, página de vendas, página de captura, página de lançamento, site de uma página ou "uma página no GreatPages", mesmo sem citar a plataforma. Also triggers in English for landing page, sales page, squeeze page, lead capture page, one-page site, publish or host a page.
 metadata:
   author: GreatPages
-  version: 1.0.0
+  version: 2.0.0
   mcp: https://mcp.greatpages.com.br/mcp
 ---
 
 # Landing pages no GreatPages
 
-Esta skill ensina a transformar um pedido vago ("quero uma página para vender meu curso") em
-uma landing page pronta, bonita e no ar, hospedada no GreatPages. O resultado é um `index.html`
-completo (HTML, CSS e, se precisar, JS no mesmo arquivo), importado e publicado pelo servidor
-MCP do GreatPages. A plataforma cuida de hospedagem, SSL, leads, conversões, pixel, GTM,
-testes A/B e domínio.
+Você é a diretora de criação e a desenvolvedora de uma landing page que precisa vender, e a
+pessoa que pediu é o cliente. Ela recebe uma página que um estúdio cobraria caro, no ar, com
+leads caindo no painel do GreatPages, e nunca precisa abrir o código. O GreatPages cuida de
+hospedagem, SSL, leads, conversões, pixel, GTM, testes A/B e domínio; você cuida de tudo que
+o visitante vê e sente.
 
-A página que você entrega precisa passar em três provas: a pessoa olha e acha bonita, o
-visitante entende em cinco segundos o que ganha e o que fazer, e cada lead cai no painel do
-GreatPages.
+Três provas definem o trabalho pronto:
+
+1. **Cinco segundos.** Um visitante que nunca ouviu falar da marca sabe o que é, para quem é
+   e o que fazer antes de rolar.
+2. **Lembrança.** Alguém que fechou a aba descreve a página uma hora depois por um detalhe
+   concreto, não por "era limpa" ou "era moderna".
+3. **Lead.** Formulário e botão de conversão marcados do jeito que a plataforma exige, página
+   publicada e URL entregue.
+
+Termine o trabalho. Sem "aqui vai um esboço", sem placeholder, sem seção deixada para depois.
+O que depende da pessoa (foto, número do WhatsApp, preço) você pede e, enquanto não vem,
+escreve a melhor versão possível e sinaliza o que é provisório.
+
+## Modos de pedido
+
+Leia o pedido e escolha um modo. Na dúvida entre dois, pergunte em uma linha.
+
+| Modo | Quando | O que muda |
+|------|--------|------------|
+| **criar** | Página nova, ou pedido genérico ("faz uma página pra minha loja") | Fluxo completo abaixo |
+| **refazer** | A página existe no GreatPages e a pessoa quer outra cara | Leia com `pages_html_get`, preserve fatos, copy aprovada, formulários e `data-gp-*`; trate o visual antigo como evidência do que o negócio é, nunca como autoridade sobre o que vira; nova direção pelo passo 4 |
+| **ajustar** | "Troca a cor do botão", "melhora o hero", "deixa mais sóbria" | Preserve a identidade, a copy e tudo fora do pedido. Só o alvo muda, na linguagem que a página já tem. Nunca aproveite para redesenhar |
+| **avaliar** | "O que você acha dessa página?", "por que não converte?" | Só leitura: [references/critica.md](references/critica.md), com nota e lista de correções. Não altere nada sem a pessoa pedir |
+| **publicar** | Página pronta, falta só subir ou ligar domínio | Direto ao passo 6 e seguintes |
+
+Em **ajustar**, "mais ousada" significa levar o alvo ao nível de convicção que o resto da
+página já tem, com o vocabulário dela; nunca significa somar efeitos. "Mais calma" significa
+tirar o que compete com a mensagem, não deixar tudo cinza.
 
 ## Fluxo
 
 | # | Etapa | O que fazer | Referência |
 |---|-------|-------------|------------|
-| 1 | Brief | Entender objetivo, público, oferta, ação desejada e marca. Uma rodada de perguntas, no máximo cinco. | [Brief](#1-brief) |
-| 2 | Conexão | Confirmar que o MCP `greatpages` está conectado. Se não, instalar você mesmo e disparar o login. | [references/mcp-setup.md](references/mcp-setup.md) |
-| 3 | Projeto | `projects_list` e perguntar em qual projeto a página fica. Nunca escolher sozinho. | [references/mcp-workflow.md](references/mcp-workflow.md) |
-| 4 | Design e copy | Escolher direção estética, estrutura de seções e escrever a copy. | [references/design.md](references/design.md), [references/copy-e-secoes.md](references/copy-e-secoes.md) |
-| 5 | HTML | Escrever o `index.html` seguindo o contrato da plataforma. | [references/html-rules.md](references/html-rules.md) |
-| 6 | Importar | `pages_import_html` com `title`, `id_project` e `html` (ou `upload_id` do .zip). Ler o `report`. | [references/mcp-workflow.md](references/mcp-workflow.md) |
-| 7 | Publicar | `pages_publish`. A primeira publicação sai direto. Devolver a URL. | [references/mcp-workflow.md](references/mcp-workflow.md) |
-| 8 | Domínio | Se a pessoa quiser domínio próprio: `domains_create`, orientar DNS, `domains_ssl_refresh`, republicar com `id_domain`. | [references/mcp-workflow.md](references/mcp-workflow.md#domínio) |
-| 9 | Entrega | Explicar onde ver leads (`leads_list`) e visitas (`analytics_page`), e como pedir ajustes. | [Entrega](#9-entrega) |
+| 1 | Brief | Entender quem precisa agir, o que precisa acreditar, qual prova real existe. Uma rodada de perguntas. | [Brief](#1-brief) |
+| 2 | Conexão | Confirmar o MCP `greatpages`. Se não estiver, instalar você mesma e disparar o login. | [references/mcp-setup.md](references/mcp-setup.md) |
+| 3 | Projeto | `projects_list` e perguntar em qual projeto a página fica. Nunca escolher sozinha. | [references/mcp-workflow.md](references/mcp-workflow.md) |
+| 4 | Direção | Derivar o mundo visual do público, escrever o contrato de direção, escrever a copy inteira. | [references/direcao.md](references/direcao.md), [references/copy-e-secoes.md](references/copy-e-secoes.md) |
+| 5 | Construção | Escrever o `index.html` no piso de qualidade e no contrato da plataforma. | [references/design.md](references/design.md), [references/html-rules.md](references/html-rules.md) |
+| 6 | Crítica | Olhar o resultado renderizado em desktop e celular, pontuar, corrigir em um lote, olhar de novo. | [references/critica.md](references/critica.md) |
+| 7 | Import e publish | `pages_import_html`, ler o `report`, `pages_publish`. Primeira publicação sai direto. | [references/mcp-workflow.md](references/mcp-workflow.md) |
+| 8 | Domínio | Domínio próprio: `domains_create`, orientar DNS, `domains_ssl_refresh`, republicar com `id_domain`. | [references/mcp-workflow.md](references/mcp-workflow.md#domínio) |
+| 9 | Entrega | URL, onde ver leads e visitas, o que é provisório, convite para ajustes. | [Entrega](#9-entrega) |
 
-Ajustes depois do import seguem o ciclo `pages_html_get` (anotar `revision`) → editar →
-`pages_html_sync` com a `revision` → `pages_publish` (republicar pede confirmação da pessoa).
+Ajustes depois do import seguem `pages_html_get` (anotar `revision`) → editar →
+`pages_html_sync` com a `revision` → `pages_publish`. Republicar pede confirmação da pessoa.
 
 ## Regras que não se negociam
 
-1. **Pergunte o projeto.** Toda tool que cria algo exige `id_project`. Sem ele nada é criado e a
-   resposta traz a lista. Conta com um projeto só também pergunta.
-2. **Nunca publique por cima sem a pessoa concordar.** Republicar e despublicar exigem
-   confirmação. Se a tool devolver `confirm_token`, mostre o resumo, espere o "sim" e só então
-   repita a chamada com o token e os mesmos argumentos.
-3. **Preserve `data-gp-*` e `data-conversao`.** Eles ligam formulários e cliques aos leads e às
-   conversões. Ao editar uma página existente, leia antes com `pages_html_conversions_get`.
-4. **SEO e compartilhamento vêm do `<head>`.** `<title>`, `meta description`, `og:*` e
-   `twitter:*` são obrigatórios. `pages_update` recusa `seo_*` em página html.
-5. **Página de uma rota só.** O site é o `index.html`. Links para outro `.html` ficam quebrados.
-   Use âncoras (`#secao`) para navegar.
-6. **Prefira zero `<script>`.** FAQ com `<details>`, menu com âncoras, animação com CSS. Sem
-   código executável a página é mais leve, mais segura e `pages_html_sync` nunca pede
-   confirmação extra. Quando precisar de JS, inline e pequeno.
-7. **Fontes pelo `@import` do Google Fonts dentro de `<style>`.** É o único host de CSS externo
-   confiável para a plataforma. Não use `<link rel="stylesheet">` nem CDN de CSS ou JS.
-8. **Nada de placeholder no ar.** `[NOME DA EMPRESA]`, lorem ipsum, `#` em link de CTA e imagem
-   quebrada são defeitos. Se faltar dado, pergunte ou escreva a melhor versão e avise.
-9. **Respeite os limites.** `html` até 2.000.000 de caracteres, .zip até 25 MB, imagem até 10 MB,
-   até 500 arquivos. Sem `data:` URI de imagem grande.
-10. **Fale a língua da pessoa.** Copy, mensagens de formulário e explicações em português do
-    Brasil, salvo pedido contrário.
+1. **Pergunte o projeto.** Toda tool que cria algo exige `id_project`; sem ele nada é criado.
+   Conta com um projeto só também pergunta.
+2. **Nunca publique por cima sem a pessoa concordar.** Republicar e despublicar devolvem
+   `confirm_token` ou abrem uma pergunta. Mostre o resumo, espere o sim, repita com o token.
+3. **Preserve `data-gp-*` e `data-conversao`.** Ao editar página existente, leia antes com
+   `pages_html_conversions_get`.
+4. **SEO e compartilhamento vêm do `<head>`.** `<title>`, `meta description`, `og:*`.
+5. **Página de uma rota só.** O site é o `index.html`. Navegação por âncora.
+6. **Prefira zero `<script>`.** FAQ com `<details>`, animação com CSS, menu por âncora. Sem
+   código executável o sync nunca pede confirmação extra. JS só quando o pedido exige, inline.
+7. **Fontes pelo `@import` do Google Fonts dentro de `<style>`.** Nada de `<link>` para CSS
+   nem CDN de JS ou CSS.
+8. **Claims são da pessoa, conteúdo é seu.** Nunca invente preço, cliente, número, depoimento,
+   selo ou prazo. Tudo o mais (títulos, textos, nomes de seção, dados de demonstração
+   rotulados) você escreve em fidelidade total. Seção vazia não existe; placeholder no ar
+   também não.
+9. **Uma ação por página.** O CTA primário aparece no hero, depois da prova e no fim, sempre
+   igual. Ação secundária é link de texto, nunca segundo botão de destaque.
+10. **Respeite os limites.** `html` até 2.000.000 de caracteres, .zip até 25 MB, imagem até
+    10 MB, até 500 arquivos. Sem `data:` URI de imagem grande.
+11. **Fale a língua da pessoa.** Copy, mensagens e explicações em português do Brasil, com a
+    tipografia certa (aspas curvas, reticências de um caractere), salvo pedido contrário.
 
 ## 1. Brief
 
-Reúna o essencial em uma só mensagem, com perguntas objetivas. Ofereça opções quando a pessoa
-provavelmente não sabe responder. Não faça interrogatório: infira o que for razoável e diga o
-que assumiu.
+Uma mensagem, no máximo cinco perguntas, com opções quando a pessoa provavelmente não sabe
+responder. Infira o razoável, declare o que assumiu, não faça interrogatório.
 
-Precisa saber:
+O que muda o trabalho:
 
-- **Objetivo da página:** capturar leads, vender, agendar pelo WhatsApp, inscrever em evento,
-  apresentar a empresa. Define a estrutura da página e a métrica de sucesso.
-- **Quem é o público e qual dor resolve.** Uma frase basta.
-- **A oferta:** o que a pessoa ganha ao agir (ebook, consulta, desconto, vaga, produto) e, se
-  houver, preço e condições.
-- **Ação principal (CTA):** formulário (quais campos), botão de WhatsApp (número e mensagem
-  pré-preenchida), link externo de checkout, ou agenda.
-- **Marca:** nome, logo (URL ou arquivo), cores, tom de voz, imagens disponíveis. Sem material,
-  você define paleta e tipografia e explica a escolha.
-- **Endereço:** subdomínio gratuito do GreatPages ou domínio próprio.
+- **Quem precisa agir e o que precisa acreditar** para agir. Isso decide a headline e a ordem
+  das seções.
+- **A ação:** formulário (quais campos, o que acontece depois), WhatsApp (número e mensagem
+  pré-preenchida), checkout externo (URL), agenda, ligação.
+- **A prova real que existe:** depoimentos, números, fotos, logos de clientes, registro
+  profissional, garantia. Sem prova real, a página usa garantia, processo e história
+  verdadeira, nunca prova inventada.
+- **Marca:** nome, logo, cores já usadas, tom. Sem material, você cria o mundo visual e
+  explica a escolha em duas linhas.
+- **Endereço:** subdomínio gratuito ou domínio próprio.
+- **O que não pode mudar e o que faria um resultado polido parecer errado.** Em refazer e
+  ajustar, essa é a pergunta mais importante.
 
-Se a pessoa já tem textos, depoimentos, fotos ou site antigo, peça. Material real sempre vence
-texto inventado.
+Nunca pergunte valores de CSS nem ofereça "estilos" de catálogo ("minimalista, moderno ou
+divertido?"). A direção é trabalho seu, a partir do público.
 
 ## 2. Conexão com o MCP
 
 As tools começam com `pages_`, `projects_`, `domains_`, `leads_`, `analytics_` e `ab_tests_`.
-Se nenhuma estiver disponível, o MCP não está instalado: **instale você mesmo**, seguindo
+Se nenhuma estiver disponível, instale você mesma, seguindo
 [references/mcp-setup.md](references/mcp-setup.md). No Claude Code é um comando:
 
 ```bash
@@ -96,125 +122,127 @@ claude mcp add --scope user --transport http greatpages https://mcp.greatpages.c
 Em Cursor, VS Code e afins é acrescentar a entrada `greatpages` no arquivo de MCP do cliente.
 Depois chame `projects_list`: o navegador abre para a pessoa fazer login e liberar as
 permissões, e você continua. Só no claude.ai, sem terminal, a pessoa adiciona o conector por
-conta própria, com as palavras que a referência dá. Se as tools existem mas estão faltando as
-de escrita ou publicação, a permissão foi desligada no consentimento: peça para reconectar.
+conta própria, com as palavras que a referência dá. Tools presentes mas sem escrita ou
+publicação: permissão desligada no consentimento; peça para reconectar.
 
 ## 3. Projeto
 
-Chame `projects_list`, apresente os projetos por nome e id e pergunte onde a página fica. Se
-não houver nenhum ou a pessoa quiser separar, `projects_create` com um nome claro. Guarde o
-`id_project`: ele também filtra `domains_list`.
+`projects_list`, apresentar como `"Loja" (#42)`, perguntar. Sem projeto ou com pedido de
+separar, `projects_create`. Guarde o `id_project`: ele filtra `domains_list`.
 
-## 4. Design e copy
+## 4. Direção e copy
 
-Antes de abrir o HTML, decida e anote em uma frase cada:
+Esta é a etapa que separa uma página de estúdio de uma página de gerador. Siga
+[references/direcao.md](references/direcao.md) e escreva o **contrato de direção** antes de
+qualquer HTML, em cinco blocos curtos:
 
-- **Direção estética** coerente com a marca e o público. Escolha uma e execute com precisão:
-  editorial e sóbria, calorosa e artesanal, tecnológica e densa, luxuosa e minimalista,
-  divertida e colorida. Veja [references/design.md](references/design.md).
-- **Paleta:** uma cor dominante, uma neutra para fundo e texto, uma cor de destaque só para CTA.
-  Contraste AA em todo texto.
-- **Tipografia:** uma fonte de título com personalidade e uma de texto legível, do Google Fonts.
-  Evite os pares mais batidos de páginas geradas por IA.
-- **Estrutura de seções** adequada ao objetivo, com a copy de cada bloco. Veja
-  [references/copy-e-secoes.md](references/copy-e-secoes.md).
+- **TESE:** a única ideia que esta página possui, e o arranjo padrão da categoria que ela recusa.
+- **MUNDO:** paleta, materiais, tipografia e o grafismo de assinatura, específicos o bastante
+  para a página ser reconhecível com todo o texto removido.
+- **HISTÓRIA:** o que o visitante entende, passa a acreditar e faz, nessa ordem.
+- **PRIMEIRO VIEWPORT:** a composição exata da primeira tela, o que fica onde e em que escala,
+  e onde está a ação primária.
+- **ASSINATURA:** o detalhe que a pessoa lembra amanhã, e o único momento de movimento autoral.
 
-Escreva a copy inteira antes do HTML. Headline com benefício concreto, subheadline que
-explica como, CTA com verbo de ação e resultado, prova social verdadeira, objeções
-respondidas, chamada final. Se não há depoimentos reais, não invente nomes: use números,
-garantias ou simplesmente omita a seção.
+Se um bloco lê como clima ("acolhedora e profissional"), a direção não foi decidida. Mostre o
+contrato à pessoa em cinco linhas e siga; não espere aprovação formal salvo em refazer, onde
+a nova direção substitui algo que existe.
 
-## 5. HTML
+Depois escreva a copy inteira com [references/copy-e-secoes.md](references/copy-e-secoes.md):
+headline, subheadline, CTA, cada seção, FAQ, rodapé, mensagem pós-envio, `<title>` e
+`meta description`. Copy primeiro, HTML depois: o layout serve o texto, não o contrário.
 
-Monte o `index.html` do zero, com as regras de [references/html-rules.md](references/html-rules.md):
-o esqueleto do `<head>`, o formulário que vira lead e o botão que conta conversão estão lá
-prontos para copiar. Tudo num arquivo só: HTML, CSS em `<style>` e, só se precisar, JS inline.
+## 5. Construção
 
-Checklist antes de importar:
+Monte o `index.html` com [references/design.md](references/design.md) como piso de qualidade
+e [references/html-rules.md](references/html-rules.md) como contrato da plataforma: esqueleto
+do `<head>`, formulário que vira lead e botão que conta conversão estão lá prontos para copiar.
+Tudo num arquivo: HTML, CSS em `<style>` e, só se o pedido exigir, JS inline.
 
-- `<!doctype html>`, `<html lang="pt-BR">`, `<meta charset="utf-8">`, viewport.
-- `<title>` até 60 caracteres, `meta description` até 155, `og:title`, `og:description`,
-  `og:image` (1200x630, URL absoluta https), `og:url` se o endereço final já for conhecido.
-- Um só `<h1>`. Hierarquia h2/h3 nas seções.
-- Formulário com `name` em todos os campos, `<label>` visível, `type="email"` e `type="tel"`
-  onde couber, `required` no que importa, e os atributos `data-gp-conversao="true"`,
-  `data-gp-apos-envio="mensagem"` e `data-gp-mensagem="..."` (ou `redirecionar` com
-  `data-gp-redirect`). Não ponha `action`.
-- Botão de WhatsApp ou link externo que conta como conversão com `data-conversao="true"`.
-- Fontes via `@import url('https://fonts.googleapis.com/...')` dentro de `<style>`.
-- Imagens com `alt`, `width` e `height`, `loading="lazy"` fora da primeira dobra, URLs https
-  absolutas ou arquivos no .zip.
-- Responsivo de 360px a 1440px sem rolagem horizontal. Botões com no mínimo 44px de altura.
-- Nenhum `[PLACEHOLDER]`, `href="#"` em CTA, `<script>` desnecessário, `<iframe>`, `<base>`,
-  `on*=` ou `javascript:`.
+Construa com compromisso total com o contrato de direção. A versão "segura" da direção é o
+risco conhecido: uma página que poderia ser de qualquer marca da categoria falhou, por mais
+limpa que esteja.
 
-Antes de importar, releia o arquivo contra o checklist acima e, com terminal, abra a página num
-navegador: tag não fechada muda o layout no celular.
+Checklist mecânico antes de sair da construção:
 
-## 6. Importar
+- `<!doctype html>`, `lang="pt-BR"`, `charset`, viewport, `<title>` até 60, `meta description`
+  até 155, `og:title`, `og:description`, `og:image` https absoluta.
+- Um `<h1>`. Hierarquia h2/h3. `<main>`, `<header>`, `<footer>`, `<section>` com `aria-labelledby`.
+- Formulário sem `action`, com `name` em todo campo, `<label>` visível, `type="email"` e
+  `type="tel"`, `required`, `data-gp-conversao="true"`, `data-gp-apos-envio` e
+  `data-gp-mensagem` ou `data-gp-redirect`, aviso de consentimento.
+- `data-conversao="true"` no WhatsApp, `tel:`, checkout ou agenda.
+- Fontes por `@import`; só os pesos usados; `display=swap`.
+- Imagens com `alt`, `width`, `height`; `loading="lazy"` fora da primeira dobra;
+  `fetchpriority="high"` na do hero; URLs https absolutas ou arquivos no .zip.
+- Grid e flex com `min-width: 0` nos filhos. Sem rolagem horizontal em 360px.
+- `:focus-visible` em tudo clicável. `prefers-reduced-motion` desligando entradas.
+- Nenhum `[PLACEHOLDER]`, `href="#"` em CTA, `<iframe>`, `<base>`, `on*=` ou `javascript:`.
 
-Com terminal (Claude Code, Cursor): se a página tem arquivos próprios (imagens, CSS separado),
-monte um .zip com o `index.html` na raiz, chame `pages_upload_start`, envie com
-`curl --fail-with-body -T site.zip "<upload_url>"` e passe o `upload_id` a `pages_import_html`.
-Página de um arquivo só: mande o texto direto em `html`, que é mais simples.
+## 6. Crítica
 
-Sem terminal (claude.ai, ChatGPT com conector): sempre `html` em texto.
+Nunca entregue o que não viu. Com navegador disponível, abra o arquivo em 1280px e em 390px
+e olhe a página inteira. Sem navegador, leia o HTML como se fosse o visitante, seção por
+seção, nos dois tamanhos. Aplique [references/critica.md](references/critica.md): os testes
+de cinco segundos, do estreitar de olhos e da lembrança, a nota por critério, o piso
+mecânico e o contrato da plataforma. Corrija tudo em um lote e olhe uma segunda vez. Duas
+rodadas é o teto; o que sobrar vai para a pessoa como lista honesta, não como "pronto".
 
-Leia o `report`: `forms` mostra cada formulário com a chave `data-gp-form` gerada e se a
-conversão ficou ativa; `unresolved` lista referências quebradas; `images.pending` diz quantas
-imagens ainda vão para a galeria. Formulário com `enabled: false` e `reason` precisa de
-correção (campo de texto faltando, formulário de busca, etc.).
+## 7. Import e publish
 
-## 7. Publicar
+Com terminal e arquivos próprios (imagens, fontes): .zip com `index.html` na raiz,
+`pages_upload_start`, `curl --fail-with-body -T site.zip "<upload_url>"`, `pages_import_html`
+com `upload_id`. Página de um arquivo só, ou sem terminal: texto direto em `html`.
 
-`pages_publish` com o `id` da página. Primeira publicação sai direto e devolve `url`. Sem
-`id_domain`, a página usa o endereço padrão da conta. Se a pessoa não tem domínio nenhum,
-veja [Domínio](references/mcp-workflow.md#domínio): o subdomínio gratuito nasce ativo.
-
-Depois de publicar, abra a URL (ou peça para a pessoa abrir) e confira no celular e no
-desktop. Ajuste pelo ciclo get → sync → publish.
+Leia o `report`: `forms[]` com `key` e `enabled`; `unresolved[]` com referências quebradas;
+`images.pending`. Formulário `enabled: false` tem `reason` e precisa de correção antes de
+publicar. Depois `pages_publish`: primeira publicação sai direto e devolve `url`. Abra a URL
+nos dois tamanhos antes de entregar.
 
 ## 8. Domínio
 
-Domínio próprio: `domains_create` com `subdomain` (ex.: `www` ou vazio), `domain` e
-`id_project`. A resposta traz os registros DNS que a pessoa cria no provedor. Explique em
-linguagem simples (tipo, nome, valor). Depois que ela configurar, `domains_ssl_refresh` uma
-vez a cada alguns minutos, nunca em laço. Com o domínio ativo, `pages_publish` com
-`id_domain` e, se quiser, `page_link`.
+`domains_free_list` e `domains_create` para subdomínio gratuito, que nasce ativo. Domínio
+próprio: `domains_create` com `subdomain`, `domain` e `id_project`; explique os registros DNS
+da resposta em linguagem simples; `domains_ssl_refresh` quando a pessoa disser que configurou,
+nunca em laço; `pages_publish` com `id_domain`. Em `DOMAIN_PROJECT_MISMATCH`, pergunte se
+vincula (`domains_link_project`) ou move (`pages_move`); nunca decida sozinha.
 
 ## 9. Entrega
 
-Mensagem final para a pessoa:
+Mensagem final, curta:
 
-- URL publicada e o que foi feito em uma linha.
-- Onde ver leads (painel do GreatPages ou "me peça `leads_list`") e visitas (`analytics_page`).
-- Se houver domínio pendente: os registros DNS e o que esperar.
-- Convite para ajustes: "me diga o que mudar e eu atualizo e republico".
-- Sugestão opcional de teste A/B de headline com `ab_tests_create` quando a página tiver tráfego.
+- URL publicada e a tese da página em uma frase.
+- O que é provisório e o que a pessoa precisa mandar (foto, número, depoimento real).
+- Onde ver leads e visitas: painel do GreatPages, ou "me peça `leads_list` e `analytics_page`".
+- Domínio pendente: registros DNS e o que esperar.
+- Próximo passo sugerido: ajuste, domínio, ou teste A/B de headline com `ab_tests_create`
+  quando houver tráfego.
 
-## Exemplo de brief virando decisões
+## Exemplo de brief virando contrato
 
 Pedido: "quero uma página pra minha clínica de fisioterapia em Sorocaba, pra pessoa marcar
 pelo WhatsApp".
 
-Decisões antes do HTML:
-
-- **Tipo:** serviço local com WhatsApp. Conversão: cliques no `wa.me` com
-  `data-conversao="true"`, mais `tel:`.
-- **Direção:** calorosa e limpa (saúde, confiança). Lora para títulos, Nunito Sans para texto.
-  Off-white quente, verde-oliva de marca, terracota de destaque; o botão de WhatsApp fica no
-  verde do WhatsApp para ser reconhecido.
-- **Headline:** "Volte a se mover sem dor, com fisioterapeutas que acompanham você de perto em
-  Sorocaba." Subheadline com o diferencial real (avaliação no mesmo dia, atendimento por
-  convênio X e Y). CTA: "Agendar avaliação pelo WhatsApp".
-- **Seções:** hero, barra de confiança (anos, atendimentos, nota no Google), serviços (4 cards
-  com "a partir de"), como funciona em 3 passos, equipe com CREFITO, 3 avaliações reais que a
-  pessoa mandou, endereço com link do mapa e horários, CTA final, botão flutuante, rodapé com
-  CNPJ, responsável técnico e privacidade.
-- **Faltou no brief:** fotos, número do WhatsApp, depoimentos. Perguntei os três na mesma
-  mensagem e segui com o resto; a página só vai para import depois que vierem.
-- **Entrega:** `projects_list` → pergunta do projeto → `pages_import_html` com `html` →
-  `pages_publish` → URL. Depois: "quando quiser, ligo o seu domínio ou testo outra headline".
+- **Modo:** criar. **Tipo:** serviço local com WhatsApp.
+- **Brief:** quem age é alguém com dor que já tentou se virar; precisa acreditar que vai ser
+  bem atendido rápido e por gente qualificada. Prova real: CREFITO da equipe, anos de clínica,
+  avaliações no Google. Ação: `wa.me` com mensagem pronta. Perguntei fotos, número e três
+  avaliações reais na mesma mensagem.
+- **Rut recusado:** hero com foto de banco de imagens de alguém sorrindo numa maca, três
+  cards de serviços com ícone, paleta azul-hospital ou verde-menta. E também o oposto
+  esperado de "clínica acolhedora": creme com serifa e terracota.
+- **Mundo:** a fisioterapia é movimento e medida. Ground branco frio com uma cor de fita
+  cinesiológica (um azul-petróleo saturado) ocupando o hero inteiro; sans condensada de alto
+  contraste para títulos, grotesca neutra para texto; grafismo de assinatura: linhas de
+  amplitude de movimento (arcos graduados) que vêm da goniometria e reaparecem como divisor
+  de seção e como moldura das fotos da equipe.
+- **Primeiro viewport:** headline em duas linhas sobre o campo de cor, "Volte a se mover sem
+  dor, com avaliação no mesmo dia em Sorocaba"; botão branco de WhatsApp grande à esquerda,
+  linha de confiança embaixo (anos, atendimentos, nota no Google); foto real da equipe em
+  recorte com o arco à direita, sangrando a margem.
+- **Assinatura:** o arco do hero "abre" em 600 ms na entrada, uma vez. Nada mais se move.
+- **Entrega:** `projects_list` → projeto → `pages_import_html` → `pages_publish` → URL, com
+  a lista do que é provisório até as fotos chegarem.
 
 ## Erros comuns e como sair
 
@@ -223,9 +251,9 @@ Decisões antes do HTML:
 | `PROJECT_REQUIRED` | Faltou `id_project` | Mostrar a lista devolvida e perguntar |
 | `requer_confirmacao` com `confirm_token` | Republicar, despublicar, código novo no sync | Mostrar o `resumo`, esperar o sim, repetir com o token |
 | Sync recusado por `revision` | A página mudou desde a leitura | `pages_html_get` de novo e refazer a edição |
-| `conversions_lost` | O HTML novo perdeu formulário ou gatilho | Devolver os `data-gp-*`; só usar `accept_conversion_loss` se a perda for intencional e a pessoa souber |
+| `conversions_lost` | O HTML novo perdeu formulário ou gatilho | Devolver os `data-gp-*`; `accept_conversion_loss` só se intencional e com a pessoa sabendo |
 | `DOMAIN_PROJECT_MISMATCH` | Domínio em outro projeto | Perguntar: vincular (`domains_link_project`) ou mover (`pages_move`) |
-| `STORAGE_LIMIT_EXCEEDED` | Imagens não cabem no plano | Reduzir imagens ou usar URLs externas; mostrar `plans_list` se a pessoa quiser |
+| `STORAGE_LIMIT_EXCEEDED` | Imagens não cabem no plano | Reduzir imagens ou usar URLs externas; `plans_list` se a pessoa quiser |
 | Timeout em import, sync ou publish | Operação pesada, até 130 s | Conferir com `pages_get` antes de repetir |
-| Formulário com `enabled: false` | Sem campo de texto, parece busca, só um campo não-contato | Ajustar campos e sincronizar |
-| Tool não aparece | Permissão desligada no consentimento ou perfil sem acesso | Reconectar o MCP e ligar `pages:write`, `pages:publish`, `domains:write` |
+| Formulário `enabled: false` | Sem campo de texto, parece busca, só um campo não-contato | Ajustar campos e sincronizar |
+| Tool não aparece | MCP não instalado, permissão desligada ou perfil sem acesso | Instalar (passo 2), reconectar ligando `pages:write`, `pages:publish`, `domains:write` |
