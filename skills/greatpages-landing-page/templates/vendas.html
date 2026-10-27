@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Nome do produto]: [transformação em poucas palavras] | [Marca]</title>
+  <meta name="description" content="[Nome do produto] ensina [público] a [resultado] em [prazo], com [mecanismo]. Garantia de [X] dias.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[Nome do produto]: [transformação em poucas palavras]">
+  <meta property="og:description" content="[Resultado] em [prazo], com [mecanismo]. Garantia de [X] dias.">
+  <meta property="og:image" content="[URL-ABSOLUTA-DA-IMAGEM-1200x630]">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;600&display=swap');
+
+    :root {
+      --bg: #0d1117;
+      --surface: #151b24;
+      --surface-2: #1b232e;
+      --fg: #e9edf2;
+      --muted: #9aa6b5;
+      --line: #263040;
+      --brand: #7dd3fc;
+      --accent: #c7f464;
+      --accent-ink: #0d1117;
+      --radius: 10px;
+      --s-1: .5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2rem; --s-5: 3rem; --s-6: 4.5rem; --s-7: 7rem;
+      --display: "Bricolage Grotesque", system-ui, sans-serif;
+      --text: "Instrument Sans", system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--text); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; font-weight: 800; letter-spacing: -.025em; }
+    h1 { font-size: clamp(2.5rem, 1.5rem + 4.2vw, 4.75rem); }
+    h2 { font-size: clamp(1.85rem, 1.2rem + 2.2vw, 2.75rem); }
+    h3 { font-size: 1.2rem; font-weight: 500; letter-spacing: 0; }
+    p { margin: 0 0 var(--s-2); }
+    .container { width: min(1120px, 100% - clamp(2rem, 8vw, 5rem)); margin-inline: auto; }
+    .eyebrow { display: inline-block; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--brand); margin-bottom: var(--s-2); }
+    .muted { color: var(--muted); }
+    .mark { color: var(--accent); }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 3.25rem; padding: .9em 1.8em; border-radius: 999px; font-weight: 600; text-decoration: none; border: 0; cursor: pointer; font-size: 1.05rem; font-family: inherit; transition: transform .15s ease, filter .15s ease; }
+    .btn-accent { background: var(--accent); color: var(--accent-ink); }
+    .btn-accent:hover { filter: brightness(1.08); transform: translateY(-2px); }
+    .btn-ghost { border: 1px solid var(--line); color: var(--fg); }
+    .btn-ghost:hover { border-color: var(--brand); }
+    .btn:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+
+    .topo { position: sticky; top: 0; z-index: 10; background: rgba(13, 17, 23, .85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .topo .container { display: flex; align-items: center; justify-content: space-between; min-height: 4rem; gap: var(--s-2); }
+    .logo { font-family: var(--display); font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+    .topo .btn { min-height: 2.5rem; padding: .5em 1.2em; font-size: .95rem; }
+
+    .hero { padding: var(--s-6) 0; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 0, transparent calc(100% - 1px), var(--line) 100%) 0 0 / 100% 56px, linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), var(--line) 100%) 0 0 / 56px 100%; mask-image: radial-gradient(ellipse at 50% 0, #000 20%, transparent 70%); opacity: .5; z-index: -1; }
+    .hero .container { display: grid; gap: var(--s-5); align-items: center; }
+    .hero .container > * { min-width: 0; }
+    .hero .sub { font-size: 1.25rem; color: var(--muted); max-width: 40ch; margin-top: var(--s-3); }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-4); }
+    .prova-curta { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); margin-top: var(--s-4); color: var(--muted); font-size: .95rem; }
+    .prova-curta strong { color: var(--fg); font-family: var(--display); font-size: 1.3rem; display: block; }
+    .hero-visual { border: 1px solid var(--line); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(160deg, var(--surface-2), var(--surface)); aspect-ratio: 4 / 3; display: grid; place-items: center; overflow: hidden; }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .reveal { animation: sobe .7s ease both; }
+    .reveal:nth-child(2) { animation-delay: .1s; } .reveal:nth-child(3) { animation-delay: .2s; } .reveal:nth-child(4) { animation-delay: .3s; } .reveal:nth-child(5) { animation-delay: .4s; }
+    @keyframes sobe { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    section { padding: var(--s-6) 0; }
+    .sec-head { max-width: 62ch; margin-bottom: var(--s-4); }
+    .grid { display: grid; gap: var(--s-3); grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s-3); }
+    .card .tag { font-family: var(--display); color: var(--brand); font-weight: 500; font-size: .95rem; margin-bottom: var(--s-1); }
+    .dor { border-left: 3px solid var(--line); padding-left: var(--s-3); }
+    .dor p { color: var(--muted); }
+    .virada { font-family: var(--display); font-size: clamp(1.35rem, 1rem + 1.2vw, 1.75rem); font-weight: 500; max-width: 46ch; margin-top: var(--s-4); }
+    .passos { counter-reset: passo; display: grid; gap: var(--s-3); }
+    .passo { display: grid; grid-template-columns: 3rem 1fr; gap: var(--s-2); align-items: start; }
+    .passo::before { counter-increment: passo; content: counter(passo, decimal-leading-zero); font-family: var(--display); font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+    .modulos { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .modulo { background: var(--surface); padding: var(--s-3); display: grid; grid-template-columns: 4rem 1fr; gap: var(--s-2); }
+    .modulo .n { font-family: var(--display); color: var(--muted); font-weight: 500; }
+    .modulo p { margin: .25rem 0 0; color: var(--muted); font-size: .98rem; }
+    .depo { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s-3); display: grid; gap: var(--s-2); }
+    .depo p { font-size: 1.05rem; }
+    .depo footer { display: flex; gap: .75rem; align-items: center; color: var(--muted); font-size: .95rem; }
+    .depo footer img { width: 2.75rem; height: 2.75rem; border-radius: 50%; object-fit: cover; }
+    .depo strong { color: var(--fg); display: block; }
+
+    .oferta { background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) * 1.6); padding: var(--s-4); display: grid; gap: var(--s-4); position: relative; overflow: hidden; }
+    .oferta::after { content: ""; position: absolute; right: -20%; top: -40%; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(199, 244, 100, .18), transparent 65%); pointer-events: none; }
+    .oferta ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+    .oferta li { padding-left: 1.6rem; position: relative; }
+    .oferta li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .preco { position: relative; z-index: 1; }
+    .preco .de { color: var(--muted); text-decoration: line-through; }
+    .preco .por { font-family: var(--display); font-size: clamp(2.5rem, 2rem + 2vw, 3.5rem); font-weight: 800; line-height: 1; color: var(--accent); margin: .25rem 0; }
+    .preco .cond { color: var(--muted); font-size: .95rem; }
+    .preco .btn { width: 100%; margin-top: var(--s-3); }
+    .seguro { font-size: .9rem; color: var(--muted); text-align: center; margin-top: var(--s-2); }
+
+    .garantia { display: grid; gap: var(--s-3); align-items: center; grid-template-columns: 5rem 1fr; }
+    .selo { width: 5rem; height: 5rem; border-radius: 50%; border: 2px dashed var(--accent); display: grid; place-items: center; font-family: var(--display); font-weight: 800; color: var(--accent); font-size: 1.2rem; }
+
+    details { border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; list-style: none; padding: var(--s-3) 0; font-family: var(--display); font-weight: 500; font-size: 1.1rem; display: flex; justify-content: space-between; gap: var(--s-2); }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--accent); font-weight: 700; flex: none; }
+    details[open] summary::after { content: "–"; }
+    details p { color: var(--muted); padding-bottom: var(--s-3); max-width: 70ch; }
+
+    .final { text-align: center; }
+    .final .btn { margin-top: var(--s-2); }
+
+    footer.rodape { padding: var(--s-4) 0; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
+    footer.rodape .container { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); justify-content: space-between; }
+
+    @media (min-width: 900px) {
+      .hero .container { grid-template-columns: 1.05fr .95fr; gap: var(--s-6); }
+      .oferta { grid-template-columns: 1.2fr .8fr; }
+      .passos { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) { .reveal { animation: none; } .btn { transition: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container">
+      <a class="logo" href="#topo">[Marca]</a>
+      <a class="btn btn-accent" href="#oferta">Garantir minha vaga</a>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero" aria-labelledby="h1">
+      <div class="container">
+        <div>
+          <span class="eyebrow reveal">[Formato: curso online · turma X · início em DD/MM]</span>
+          <h1 id="h1" class="reveal">[Transformação principal] <span class="mark">sem [objeção]</span></h1>
+          <p class="sub reveal">[Mecanismo em uma frase: como o produto entrega a transformação. Ex.: Um método de 6 semanas com aulas de 15 minutos e plano semanal para você aplicar no mesmo dia.]</p>
+          <div class="hero-ctas reveal">
+            <a class="btn btn-accent" href="#oferta">Garantir minha vaga</a>
+            <a class="btn btn-ghost" href="#como">Ver como funciona</a>
+          </div>
+          <div class="prova-curta reveal">
+            <div><strong>[4,9/5]</strong>em [312] avaliações</div>
+            <div><strong>[+2.400]</strong>alunos desde [ano]</div>
+            <div><strong>[7] dias</strong>de garantia total</div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="[URL-DA-IMAGEM-DO-PRODUTO-OU-AUTOR]" alt="[Descrição da imagem]" width="800" height="600" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-dor">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow">Você reconhece isso?</span>
+          <h2 id="h-dor">[Frase que nomeia o problema como a pessoa sente]</h2>
+        </div>
+        <div class="grid">
+          <div class="dor"><h3>[Dor 1 em poucas palavras]</h3><p>[Como ela aparece no dia a dia da pessoa.]</p></div>
+          <div class="dor"><h3>[Dor 2]</h3><p>[Como ela aparece.]</p></div>
+          <div class="dor"><h3>[Dor 3]</h3><p>[Como ela aparece.]</p></div>
+        </div>
+        <p class="virada">[A virada: não é falta de X, é falta de Y. E Y é o que este produto entrega.]</p>
+      </div>
+    </section>
+
+    <section id="como" aria-labelledby="h-como">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow">Como funciona</span>
+          <h2 id="h-como">[Nome do método] em três movimentos</h2>
+        </div>
+        <div class="passos">
+          <div class="passo"><div><h3>[Passo 1]</h3><p class="muted">[O que a pessoa faz e o que ganha.]</p></div></div>
+          <div class="passo"><div><h3>[Passo 2]</h3><p class="muted">[O que a pessoa faz e o que ganha.]</p></div></div>
+          <div class="passo"><div><h3>[Passo 3]</h3><p class="muted">[O que a pessoa faz e o que ganha.]</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-mod">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow">O que está incluído</span>
+          <h2 id="h-mod">[Número] módulos, [número] aulas, acesso por [tempo]</h2>
+        </div>
+        <div class="modulos">
+          <div class="modulo"><span class="n">Mód. 1</span><div><h3>[Título]</h3><p>[Resultado do módulo.]</p></div></div>
+          <div class="modulo"><span class="n">Mód. 2</span><div><h3>[Título]</h3><p>[Resultado do módulo.]</p></div></div>
+          <div class="modulo"><span class="n">Mód. 3</span><div><h3>[Título]</h3><p>[Resultado do módulo.]</p></div></div>
+          <div class="modulo"><span class="n">Mód. 4</span><div><h3>[Título]</h3><p>[Resultado do módulo.]</p></div></div>
+          <div class="modulo"><span class="n">Bônus</span><div><h3>[Bônus]</h3><p>[Por que ajuda.]</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-depo">
+      <div class="container">
+        <div class="sec-head">
+          <span class="eyebrow">Quem já fez</span>
+          <h2 id="h-depo">Resultados de alunos reais</h2>
+        </div>
+        <div class="grid">
+          <article class="depo">
+            <p>“[Depoimento específico com resultado e prazo.]”</p>
+            <footer><img src="[URL-DA-FOTO]" alt="" width="44" height="44" loading="lazy"><span><strong>[Nome]</strong>[cidade ou cargo]</span></footer>
+          </article>
+          <article class="depo">
+            <p>“[Depoimento específico.]”</p>
+            <footer><img src="[URL-DA-FOTO]" alt="" width="44" height="44" loading="lazy"><span><strong>[Nome]</strong>[cidade ou cargo]</span></footer>
+          </article>
+          <article class="depo">
+            <p>“[Depoimento específico.]”</p>
+            <footer><img src="[URL-DA-FOTO]" alt="" width="44" height="44" loading="lazy"><span><strong>[Nome]</strong>[cidade ou cargo]</span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="oferta" aria-labelledby="h-oferta">
+      <div class="container">
+        <div class="oferta">
+          <div>
+            <span class="eyebrow">Sua vaga</span>
+            <h2 id="h-oferta">Tudo o que você leva ao entrar hoje</h2>
+            <ul>
+              <li>[Item principal com valor percebido]</li>
+              <li>[Item 2]</li>
+              <li>[Item 3]</li>
+              <li>[Bônus com prazo, se real]</li>
+              <li>Garantia incondicional de [X] dias</li>
+            </ul>
+          </div>
+          <div class="preco">
+            <span class="de">de R$ [valor cheio]</span>
+            <div class="por">12x R$ [parcela]</div>
+            <span class="cond">ou R$ [à vista] à vista. Acesso imediato.</span>
+            <a class="btn btn-accent" data-conversao="true" href="[URL-DO-CHECKOUT]" rel="noopener">Garantir minha vaga agora</a>
+            <p class="seguro">Pagamento seguro · Cartão, Pix ou boleto · Nota fiscal</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-gar">
+      <div class="container garantia">
+        <div class="selo" aria-hidden="true">[X]d</div>
+        <div>
+          <h2 id="h-gar">Risco zero por [X] dias</h2>
+          <p class="muted">[Condição em linguagem simples: entre, assista, aplique. Se não fizer sentido, um e-mail devolve 100% do valor, sem perguntas.]</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-faq">
+      <div class="container">
+        <div class="sec-head"><h2 id="h-faq">Perguntas frequentes</h2></div>
+        <details><summary>[Pergunta sobre acesso e prazo]</summary><p>[Resposta direta.]</p></details>
+        <details><summary>[Pergunta sobre pré-requisito]</summary><p>[Resposta direta.]</p></details>
+        <details><summary>[Pergunta sobre tempo necessário]</summary><p>[Resposta direta.]</p></details>
+        <details><summary>[Pergunta sobre suporte]</summary><p>[Resposta direta.]</p></details>
+        <details><summary>[Pergunta sobre pagamento e garantia]</summary><p>[Resposta direta.]</p></details>
+      </div>
+    </section>
+
+    <section class="final" aria-labelledby="h-final">
+      <div class="container">
+        <h2 id="h-final">[Repete a transformação em forma de convite]</h2>
+        <p class="muted">[Uma frase sobre o que muda ao decidir hoje.]</p>
+        <a class="btn btn-accent" data-conversao="true" href="[URL-DO-CHECKOUT]" rel="noopener">Garantir minha vaga</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <span>© [ANO] [Razão social]. CNPJ [00.000.000/0000-00].</span>
+      <span><a href="[URL-TERMOS]" target="_blank" rel="noopener">Termos</a> · <a href="[URL-POLITICA-DE-PRIVACIDADE]" target="_blank" rel="noopener">Privacidade</a> · <a href="mailto:[email@dominio]">[email@dominio]</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
