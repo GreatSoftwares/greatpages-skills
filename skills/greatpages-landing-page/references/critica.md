@@ -70,6 +70,25 @@ Confira cada item no CSS ou no render, não na memória:
 - Recusas: eyebrow, numeração sem sentido, cards iguais como estrutura, texto em gradiente,
   emoji como ícone, creme-serifa-terracota sem brief, escuro-neon sem brief.
 
+## Recusas contáveis
+
+Estas não são julgamento, são contagem no HTML e no CSS. Qualquer uma acima de zero volta
+para a construção antes de publicar:
+
+| Conte | Como | Máximo |
+|-------|------|--------|
+| Faces da lista de defaults de gerador no CSS (Fraunces, Playfair Display, Cormorant, Lora, Crimson, Newsreader, Syne, Space Grotesk, Space Mono, IBM Plex, DM Sans, DM Serif, Outfit, Plus Jakarta Sans, Instrument Sans, Instrument Serif, Poppins, Montserrat, Inter como display) | `grep -iE "fraunces|playfair|cormorant|lora|crimson|newsreader|syne|space grotesk|space mono|plex|dm sans|dm serif|outfit|jakarta|instrument|poppins|montserrat"` no CSS | 0 |
+| Eyebrow ou kicker: elemento de texto curto em caixa alta ou com ícone imediatamente acima do `<h1>` ou de um `<h2>` | olhe o irmão anterior de cada título | 0 |
+| Seções cujo conteúdo é uma grade de três ou mais cards iguais (ícone, título, texto) | conte as grades | 0 |
+| Numeração de seção (01, 02) sem que a ordem informe | conte | 0 |
+| Emoji ou glifo no lugar de ícone fora de conteúdo citado (uma mensagem simulada pode ter emoji) | `grep -P "[\x{1F300}-\x{1FAFF}]"` | 0 fora de citação |
+| Texto em gradiente (`background-clip: text`) | grep | 0 |
+| `<img>` no hero sem `fetchpriority="high"` ou sem `srcset` | olhe a primeira `<img>` | 0 |
+| `<img>` sem `width` e `height` | grep | 0 |
+| Foto de pessoa com `alt` vazio | olhe as fotos | 0 |
+| Palavras visíveis acima do orçamento do tipo de página | `wc -w` no texto sem tags | serviço e captura 500, evento 700, vendas 1.200 |
+| Fonte carregada de host externo com terminal disponível | `@import` ou `<link>` para fonts.googleapis.com | 0 |
+
 ## Contrato da plataforma
 
 - `<!doctype html>`, `lang`, `charset`, viewport, `<title>`, `meta description`, `og:*`.
