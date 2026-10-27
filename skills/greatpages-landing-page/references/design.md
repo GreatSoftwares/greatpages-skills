@@ -1,149 +1,186 @@
-# Design de landing page que converte
+# Piso de qualidade
 
-Bonito aqui tem definição: a página parece feita por um designer para aquela marca, não gerada
-por um modelo. O visitante percebe hierarquia sem pensar, lê sem esforço e sabe onde clicar. O
-que segue é o mínimo para chegar lá. Decida tudo antes de escrever CSS.
+Carregue depois que a direção está decidida e construa sem anunciar a lista. O contrato de
+direção manda em tudo aqui, exceto nas linhas marcadas como **proibido**; o seu hábito não
+manda em nada. Cada item é uma checagem sobre o resultado renderizado, não uma intenção.
 
-## 1. Direção estética
+## Tipografia
 
-Escolha **uma** direção e execute com consistência. Misturar duas gera página genérica.
+- **Escala com papéis.** Defina `--step-0: 1rem` e derive os papéis: texto, destaque,
+  título de seção, display. Entre papéis adjacentes a diferença de tamanho ou peso é óbvia à
+  primeira vista; se dois papéis parecem iguais, um deles não existe.
+- **Display:** `clamp()` entre 2.25rem e 6rem no máximo. `line-height` de 0.95 a 1.1. Tracking
+  levemente negativo em sans grandes, até `-0.04em`, nunca em serifa. `text-wrap: balance`.
+- **Texto:** 1rem a 1.125rem, `line-height` 1.5 a 1.65, medida de 60 a 75 caracteres
+  (`max-width: 65ch`). `text-wrap: pretty`. Em fundo escuro, texto claro ganha um passo de
+  peso, um toque de tracking e um pouco mais de entrelinha.
+- **Pesos:** dois ou três ao todo. Hierarquia vem de tamanho, peso, espaço e cor combinados,
+  não de tamanho sozinho.
+- **Quebras:** título quebrado à mão só entre frases, conferido em cada largura. Uma palavra
+  sozinha na última linha de um título é defeito; o `balance` costuma resolver, senão edite a
+  copy.
+- **Detalhes de texto em português:** aspas curvas (“ ”), reticências de um caractere (…),
+  espaço inflexível entre número e unidade (`R$&nbsp;197`, `10&nbsp;MB`), números com ponto
+  de milhar e vírgula decimal. Sem travessão separando frases no corpo; use ponto ou vírgula.
+- **Carregamento:** `@import` com só os pesos usados e `display=swap`; `font-family` com
+  fallback genérico; `font-size-adjust` quando o fallback muda muito a altura de x.
 
-| Direção | Quando | Tipografia | Cor | Forma |
-|---------|--------|------------|-----|-------|
-| Editorial sóbria | Consultoria, advocacia, educação, B2B | Serifa de display + sans neutra | Fundo claro quente, uma cor profunda, destaque discreto | Muito espaço, grid rígido, linhas finas |
-| Calorosa artesanal | Gastronomia, bem-estar, produto físico, local | Serifa humanista ou sans arredondada | Terrosos, creme, verde ou terracota | Cantos arredondados, fotos grandes, texturas sutis |
-| Tecnológica densa | SaaS, app, infoproduto técnico | Sans geométrica de peso alto + mono para detalhes | Fundo escuro, acento elétrico único | Cards, bordas finas, grade visível |
-| Luxo minimalista | Imóveis, estética, joalheria, alto ticket | Serifa fina de display + sans leve | Preto, off-white, um metálico ou tom profundo | Margens enormes, imagem em destaque, pouco texto |
-| Divertida colorida | Infantil, eventos, marcas jovens | Sans de display gorda + sans simples | Duas cores saturadas e uma neutra | Blocos sólidos, formas, ilustração |
+## Cor e contraste
 
-Anote a direção, três adjetivos e o "um detalhe memorável" (um grafismo, um recorte de foto,
-uma animação de entrada, uma tipografia). Esse detalhe aparece no hero e volta uma vez no fim.
+- **Contraste medido:** texto e placeholder ≥ 4.5:1; texto grande, botão e ícone ≥ 3:1.
+  Confira os pares reais, inclusive texto sobre imagem (com overlay, não com adivinhação) e
+  texto sobre a cor da marca.
+- **Secundário tingido:** em superfície colorida, o texto secundário deriva do matiz ou da
+  tinta, nunca de um cinza genérico. Texto `#999` sobre branco é **proibido**.
+- **Uma cor para a ação.** O CTA é o único dono da cor mais saturada. Se a cor do botão
+  aparece em ícone, borda e título, o botão perdeu.
+- **Neutros com temperatura.** Branco e preto puros raramente; off-white e quase-preto
+  tingidos pelo mundo.
+- **Gradiente:** no máximo um, grande e sutil, dentro da estratégia de cor. Gradiente em texto
+  é **proibido**: ênfase vem de peso ou tamanho.
+- **Escuro de verdade:** tema escuro é composto, com elevação de superfície e contraste
+  planejados, não a inversão do claro.
 
-## 2. Hierarquia
+## Espaço e ritmo
 
-O olho segue tamanho, peso, contraste e posição. Em cada seção só uma coisa pode ser a maior.
+- **Escala de 4px:** 4, 8, 12, 16, 24, 32, 48, 64, 96, 128. Variáveis `--s-1` a `--s-7`.
+  Valores soltos fora da escala são defeito.
+- **Agrupar por proximidade** antes de agrupar por caixa. Grupos apertados, separações
+  generosas. Mais espaço acima de um título do que abaixo dele. Leia os valores computados.
+- **Cadência:** intervalos apertados e generosos alternando de propósito. Um valor de
+  espaçamento repetido até tudo ter o mesmo peso é monotonia, não sistema.
+- **Container:** `max-width` entre 1120 e 1200px, `padding-inline: clamp(1rem, 4vw, 2.5rem)`.
+- **Seções:** 6 a 9rem de respiro em desktop, 4 a 5rem em celular, ou mudança de fundo. Nunca
+  separadas só por linha.
 
-- **Hero:** headline é o maior texto da página (clamp de 2rem a 4rem). Subheadline com 55% a
-  60% do tamanho, peso normal. CTA logo abaixo, dentro da primeira dobra em celular. Uma
-  imagem ou grafismo. Nada mais.
-- **Seções:** título (h2) com 1.6 a 2.4rem, um parágrafo de contexto, depois o conteúdo. Não
-  comece seção com texto corrido sem título.
-- **Um foco por bloco.** Três cards iguais, não cinco. Um depoimento em destaque, não um
-  carrossel de doze.
-- **Zonas de respiro:** separe seções por espaço (6 a 9rem em desktop, 4 a 5rem em celular)
-  ou por mudança de fundo, não por linhas.
-- **CTA repetido** em três pontos: hero, após a prova social, no fim. Mesmo texto ou variação
-  curta. Mesma cor sempre.
+## Layout
 
-## 3. Tipografia
-
-- **Duas famílias no máximo.** Uma para títulos com personalidade, uma para texto com
-  legibilidade. Pesos: 2 ou 3 no total.
-- **Escala modular.** Defina `--step-0: 1rem` e derive: 1.125, 1.25, 1.5, 2, 2.5, 3.5. Use
-  `clamp()` para os títulos: `font-size: clamp(2rem, 1.2rem + 3.5vw, 4rem)`.
-- **Corpo:** 1rem a 1.125rem, `line-height: 1.6`, largura de leitura entre 55 e 72 caracteres
-  (`max-width: 60ch`).
-- **Títulos:** `line-height` de 1.05 a 1.2, `letter-spacing` levemente negativo em sans
-  grandes (`-0.02em`), nunca em serifa.
-- **Google Fonts** via `@import` no `<style>`. Pares que funcionam e fogem do óbvio:
-  - Fraunces + Source Sans 3 (editorial)
-  - Playfair Display + DM Sans (luxo)
-  - Bricolage Grotesque + Instrument Sans (tecnológica)
-  - Lora + Nunito Sans (calorosa)
-  - Syne + Manrope (jovem)
-  - Newsreader + IBM Plex Sans (consultoria)
-  - Cormorant Garamond + Outfit (estética, beleza)
-  - Space Grotesk só se a marca já usa. Evite Inter, Roboto, Arial, Montserrat e Poppins como
-    padrão: são a cara de página gerada.
-- Carregue só os pesos usados (`wght@400;600;800`). `display=swap`.
-
-## 4. Cor
-
-- **Três papéis:** dominante (marca, grandes áreas), neutra (fundo e texto) e destaque (só CTA
-  e um ou dois acentos). Proporção perto de 60/30/10.
-- Defina em `:root` como variáveis: `--bg`, `--fg`, `--muted`, `--brand`, `--brand-ink`,
-  `--accent`, `--accent-ink`, `--surface`, `--line`.
-- **Contraste:** 4.5:1 em texto normal, 3:1 em texto grande e em botão sobre fundo. Teste os
-  pares que vai usar. Texto cinza claro sobre branco é o erro mais comum.
-- **Neutros com temperatura.** Off-white quente (`#f7f3ec`) ou frio (`#f4f6f8`) em vez de
-  `#fff` puro; preto azulado ou marrom (`#15181d`, `#1f1a17`) em vez de `#000`.
-- **O botão de CTA** tem a cor mais saturada da página e aparece com essa cor **só** nele.
-- **Fundo escuro** funciona em tecnologia e luxo. Nele, texto em `#e8e8e8` e não branco puro,
-  e reduza o peso das fontes de display.
-- Gradiente: no máximo um, sutil, em área grande (hero ou fundo), nunca roxo-azul em branco.
-
-## 5. Espaçamento e layout
-
-- **Escala de 8px:** 4, 8, 12, 16, 24, 32, 48, 64, 96, 128. Variáveis `--s-1` a `--s-7`.
-- **Container:** `max-width: 1120px` (ou 1200), `padding-inline: clamp(1rem, 4vw, 2.5rem)`.
-- **Grid:** `display: grid` com `grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))`
-  para cards; `grid-template-columns: 1.1fr 0.9fr` para hero com imagem. Em celular tudo vira
-  uma coluna sozinho. Dê `min-width: 0` aos filhos do grid: sem isso, uma imagem com
-  `width="800"` ou uma palavra longa estica a coluna e cria rolagem horizontal no celular.
-- **Alinhamento:** texto à esquerda em blocos longos; centralizado só em hero e títulos de
-  seção curtos. Página inteira centralizada parece template.
+- **Teste do estreitar de olhos:** com o detalhe borrado, o elemento primário, o secundário e
+  os grupos ainda aparecem nessa ordem. Se não, a hierarquia é só texto.
+- **Primeiro viewport:** oferta, ação funcional e prova visíveis sem rolar, em celular e em
+  desktop. Em celular: título, subtítulo, ação, prova, depois a imagem; a imagem nunca empurra
+  a ação para fora da tela.
+- **Estrutura segue o conteúdo:** três cards iguais só quando os três itens são realmente
+  equivalentes. Lista, tabela, passos numerados, par de colunas e sequência de imagens
+  existem para quando não são.
 - **Assimetria intencional** em um ou dois pontos (imagem sangrando a margem, título
-  deslocado, card maior) dá vida. Em todos os pontos vira bagunça.
-- **Cards:** `border: 1px solid var(--line)` ou sombra suave, nunca os dois. Raio consistente
-  (`--radius: 12px` ou 0 para editorial). Padding interno 24 a 32px.
-- **Botões:** altura mínima 48px, padding `0.9em 1.6em`, raio igual ao dos cards ou pílula,
-  peso 600, hover com mudança perceptível (escurecer 8%, elevar 2px), `:focus-visible` com
-  anel.
-- **Formulário:** campos com 48px de altura, label acima (não só placeholder), um por linha em
-  celular, borda `--line` e foco `--brand`. Botão largura total no celular.
+  deslocado, um card maior que os outros porque importa mais). Em todos os pontos é bagunça;
+  em nenhum, template.
+- **Grid:** `display: grid` com `minmax(0, 1fr)` ou `min-width: 0` nos filhos; sem isso uma
+  imagem com `width="800"` ou uma palavra longa estica a coluna e cria rolagem horizontal.
+- **Alinhamento:** texto corrido à esquerda; centralizado só em hero e títulos curtos. Página
+  inteira centralizada é a cara do gerador.
+- **Profundidade:** sombra com deslocamento e desfoque suave (`0 12px 32px -16px`). Halo
+  colorido sem deslocamento é decoração. Sombra dura `4px 4px 0` só num mundo que é mesmo
+  neobrutalista; fora dele é fantasia.
+- **Cards:** borda de 1px ou sombra, nunca os dois; raio consistente na página inteira;
+  padding de 24 a 32px. Card dentro de card é **proibido**. Borda lateral colorida acima de
+  1px em card, item de lista ou aviso é **proibido**.
 
-## 6. Imagem
+## Controles
 
-- Uma imagem forte no hero vale mais que dez médias. Mostre o resultado ou a pessoa, não o
-  logo gigante.
-- Recorte com intenção: `object-fit: cover`, `aspect-ratio` definido, borda ou máscara que
-  conversa com a direção (arredondada, arco, inclinada).
-- Fotos reais da pessoa ou do produto sempre que existirem. Banco de imagens só com cara de
-  real, sem aperto de mão e sem escritório genérico.
-- Ícones: um conjunto só, traço consistente (SVG inline simples ou caracteres). Nada de emoji
-  como ícone de benefício.
-- Logos de clientes em cinza uniforme (`filter: grayscale(1); opacity: .7`).
+- **Botão:** altura mínima 48px, `padding: .9em 1.6em`, peso 600, raio igual ao do sistema
+  ou pílula. Hover com mudança perceptível (escurecer 8%, subir 2px, 150 ms). `:focus-visible`
+  com anel de 3px na cor da marca e `outline-offset`. Transição listando propriedades, nunca
+  `transition: all`.
+- **Link secundário:** texto com sublinhado de `text-decoration-thickness` e
+  `text-underline-offset` definidos, não um segundo botão.
+- **Formulário:** label visível acima do campo (placeholder não é label); placeholder mostra
+  o formato com reticências (`(11) 90000-0000…`); campo com 48px de altura, borda `--line`,
+  foco `--brand`; um campo por linha em celular; botão de largura total em celular; mensagem
+  de erro ao lado do campo e com a correção, não só o problema; `autocomplete`, `inputmode`
+  e `type` certos; nunca bloquear colar; `spellcheck="false"` em e-mail e telefone.
+- **Alvo de toque:** 44px no mínimo, 8px de espaço entre alvos. `touch-action: manipulation`
+  em botões e links.
 
-## 7. Movimento
+## Imagem
 
-- Uma entrada bem feita (fade e subida de 12px, `animation-delay` escalonado nos elementos do
-  hero) e hovers em botão e card. Só isso.
-- CSS puro. `@media (prefers-reduced-motion: reduce)` desliga tudo.
-- Sem parallax, sem contadores animados, sem carrossel. Nenhum deles precisa de JS para ser
+- Uma imagem forte vale mais que cinco médias. Mostre o resultado, o processo ou a pessoa,
+  nunca o logo gigante nem a foto de banco de imagens de aperto de mão.
+- Recorte com intenção: `object-fit: cover`, `aspect-ratio` definido, máscara ou moldura que
+  vem do grafismo de assinatura. Máscara geométrica fingindo contorno orgânico (círculo
+  aproximando a silhueta de uma pessoa) é pior que nada.
+- `width` e `height` em todo `<img>`; `loading="lazy"` fora da primeira dobra;
+  `fetchpriority="high"` na do hero. Foto de hero até 200 KB, demais até 100 KB, `webp` ou
+  `avif`; logo em `svg`.
+- Sem foto real ainda: bloco com a cor do mundo e o grafismo de assinatura, rotulado para a
+  pessoa como provisório. Nunca uma `<img>` quebrada no ar.
+- Logos de clientes em cinza uniforme (`filter: grayscale(1); opacity: .7`), só se forem reais.
+
+## Movimento
+
+- **Um momento autoral**, ligado à assinatura da direção, orquestrado uma vez: a entrada do
+  hero, ou a revelação de um elemento de prova. Não a mesma subida com fade em toda seção.
+- **Feedback** em botão, link e campo: 100 a 150 ms. Entrada autoral: 500 a 800 ms. Saída
+  mais rápida que entrada. Curva `cubic-bezier(0.16, 1, 0.3, 1)`; nada de bounce por reflexo.
+- Anime `transform`, `opacity`, e quando o mundo pedir, `clip-path`, `mask`, `filter`,
+  `box-shadow`; nunca `width`, `height`, `top`, `left`, `margin`.
+- Conteúdo visível no estado padrão: uma animação que falha não pode esconder a página.
+- `@media (prefers-reduced-motion: reduce)` reduz movimento sem apagar feedback.
+- Sem parallax, sem contador animado, sem carrossel. Nenhum deles precisa de JS para ser
   dispensável.
 
-## 8. Responsivo
+## Superfícies do navegador
 
-- Mobile first. Escreva o CSS para 360px e abra com `@media (min-width: 720px)` e
-  `@media (min-width: 1024px)`.
-- Hero em celular: título, subtítulo, CTA, imagem (nessa ordem). Imagem não pode empurrar o
-  CTA para fora da tela.
-- Menu: em landing page basta logo + CTA no topo. Links de âncora só em desktop. Nada de menu
-  hambúrguer com JS.
-- Tabelas de preço viram pilha. Comparativos largos viram lista.
-- Texto nunca abaixo de 1rem em celular; títulos com clamp.
-- Teste mental: 360, 390, 768, 1024, 1440. Nenhuma rolagem horizontal, nenhuma imagem
-  cortando texto, nenhum botão colado na borda.
+As partes que você não desenhou ainda carregam o design, e são o sinal mais barato de que a
+página foi construída e não montada:
 
-## 9. Anti-padrões (recusar na revisão)
+- `::selection` com cor da marca e tinta legível.
+- `caret-color` nos campos, na cor da marca.
+- `scrollbar-color` quando o mundo for escuro.
+- Anel de foco na cor do sistema, não o azul do navegador.
+- `text-underline-offset` e `text-decoration-thickness` em links.
+- `font-variant-numeric: tabular-nums` em números alinhados (preço, horário, tabela).
+- `color-scheme: dark` no `<html>` e `<meta name="theme-color">` quando o tema for escuro.
 
-- Inter ou Roboto, gradiente roxo em branco, três cards com emoji, tudo centralizado, sombra
-  forte em tudo, bordas de 20px em tudo.
-- Headline que fala da empresa ("Somos líderes em...") em vez do ganho da pessoa.
-- Botão "Saiba mais" ou "Enviar". Botão fala o que a pessoa ganha ("Quero minha vaga").
+## Responsivo
+
+- Mobile first. CSS base para 360px; `@media (min-width: 720px)` e `(min-width: 1024px)`.
+- Teste mental em 360, 390, 768, 1024, 1440: nenhuma rolagem horizontal, nenhuma imagem
+  cortando texto, nenhum botão colado na borda, nenhum título estourando.
+- Tabela de preço vira pilha; comparativo largo vira lista.
+- Texto nunca abaixo de 1rem em celular; títulos por `clamp()`.
+- Topo em celular: logo e CTA. Links de âncora só em desktop. Sem menu hambúrguer.
+- Botão de WhatsApp flutuante é bem-vindo em serviço local, com `data-conversao` e sem cobrir
+  o CTA final.
+
+## Copy no HTML
+
+- Controles nomeiam a ação ("Quero meu orçamento"), nunca "Enviar" ou "Saiba mais".
+- Mensagem pós-envio diz o que acontece e quando.
+- Nada em caixa alta por CSS em texto corrido; em títulos de display só se o mundo pedir.
+- `<title>` e `meta description` escritos para busca, não copiados da headline.
+
+## Recusar
+
+Defaults de categoria, não proibições, salvo as marcadas. Alcançar um deles com o eixo
+livre significa que você não decidiu; a correção é reescrever o elemento, não suavizá-lo.
+
+Esqueletos de página:
+
+- Cards do mesmo tamanho com ícone, título e texto como estrutura da página. Card é o
+  container preguiçoso.
+- O template da métrica: número grande, rótulo pequeno, estatísticas de apoio, acento.
+- Rótulo pequeno em caixa alta acima do título (eyebrow, kicker). **Proibido:** nenhum brief o
+  traz de volta. O título carrega o próprio peso.
+- Numeração de seção (01, 02, 03) sem que a ordem carregue informação.
+- Hero dividido (texto de um lado, imagem do outro, fileira de logos embaixo) e headline
+  centralizada sobre uma fileira de cards: são o template, qualquer que seja o mundo que o
+  pinta.
+
+Hábitos de superfície:
+
+- Texto em gradiente. Vidro e desfoque como decoração.
+- Sombra dura deslocada fora de um mundo neobrutalista.
+- Mono como fantasia de "técnico" em vez de para código, dado ou medida.
+- Emoji ou glifo Unicode no lugar de ícone.
+- Ícone de check verde em lista de benefícios de página de luxo.
+- Creme, papel, pergaminho, marfim ou luz de abajur numa página de persuasão que o brief não
+  pediu: é o default vestido com a roupa do assunto. Refaça a partir dos materiais saturados
+  do mundo.
+- Claro ou escuro escolhido pela categoria em vez da cena.
 - Depoimento inventado com nome e foto de banco de imagens.
-- Hero com três CTAs diferentes.
-- Seção de "nossos valores" em página de conversão.
-- Texto cinza `#999` em fundo branco.
-- Imagem de hero com texto por cima sem overlay ou com overlay que mata a foto.
-- Ícone de check verde em lista de benefícios de página "luxo".
+- Headline que fala da empresa ("Somos referência em...") em vez do ganho da pessoa.
 
-## 10. Revisão final de design
-
-Antes de importar, releia a página como visitante em celular e responda:
-
-1. Em 5 segundos sei o que é, para quem é e o que fazer?
-2. O CTA é o elemento mais chamativo da primeira tela?
-3. Consigo ler tudo sem aproximar? Nada cortado?
-4. A página parece desta marca ou de qualquer marca?
-5. Existe um detalhe que eu lembraria amanhã?
+O piso segura a mecânica; nunca escolhe a direção. Com tudo verde, gaste a página no mundo
+comprometido, e na dúvida entre refinado e comprometido, comprometa.
