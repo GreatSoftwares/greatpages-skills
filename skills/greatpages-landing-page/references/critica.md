@@ -24,6 +24,10 @@ pede para avaliar ou melhorar uma página que existe (modo **avaliar**). Nos doi
    ainda aparecem na ordem certa? O CTA é o ponto mais chamativo da primeira tela?
 3. **Lembrança.** Fechou a aba. Uma hora depois, o que descreveria? Se a resposta honesta é um
    clima ("era clean", "era profissional"), a direção não comprometeu.
+4. **Secura.** Conte na tabela de [riqueza mínima](design.md#riqueza-mínima): campo de tela
+   inteira, fotografia em três seções, assinatura três vezes, display fora do hero duas vezes,
+   fundos alternando, um movimento. Três linhas abaixo do mínimo é página seca, e página seca
+   volta para a construção antes de qualquer polimento.
 
 ## Nota por critério
 
@@ -36,6 +40,7 @@ na média é "não publica ainda".
 | **Ação** | Uma ação, funcional, no hero, repetida após a prova e no fim, verbo + ganho | "Enviar", "Saiba mais", dois botões competindo, ação só no fim |
 | **Prova** | Real, específica, perto de cada ação | Inventada, vaga, ou ausente onde o visitante decide |
 | **Direção** | Reconhecível com o texto removido; o mundo carrega superfícies e estrutura | Template pintado; adivinhável pela categoria |
+| **Material** | Foto, campo de cor, grafismo, número ou citação carregando cada seção que decide | Texto sobre fundo liso, seção após seção; "imagem aqui" |
 | **Hierarquia** | Estreitar de olhos revela a ordem; um foco por bloco | Tudo do mesmo peso; tudo centralizado; três CTAs |
 | **Tipografia** | Escala com papéis, medida de 60 a 75ch, títulos balanceados, faces do mundo | Default de gerador, palavra sozinha em título, texto abaixo de 1rem |
 | **Cor** | Estratégia nomeada; contraste medido; CTA dono da cor | Cinza sobre branco, gradiente roxo, cor da ação espalhada |

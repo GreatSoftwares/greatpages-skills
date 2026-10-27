@@ -79,6 +79,12 @@ Escolha uma e diga qual:
 Cor compromete em escala de página: campos que são donos de regiões inteiras, não acentos
 espalhados sobre um fundo neutro. O botão de CTA tem a cor mais saturada e a usa sozinho.
 
+Em landing page o padrão é **Comprometida** ou mais forte. **Contida** só quando o brief
+pede sobriedade com todas as letras (jurídico, financeiro, saúde de alta complexidade), e
+mesmo assim o hero é um campo inteiro da cor do mundo ou uma fotografia de tela cheia. Uma
+página com fundo branco do começo ao fim e a cor só no botão é a versão segura, e a versão
+segura é o risco conhecido.
+
 **Claro ou escuro nunca é padrão.** Escreva a cena física (quem, onde, com que luz) e deixe
 ela decidir. Página aberta no celular à noite por alguém com dor: escura cansa menos; página
 de evento aberta no escritório: clara.

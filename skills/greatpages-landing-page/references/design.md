@@ -103,8 +103,33 @@ manda em nada. Cada item é uma checagem sobre o resultado renderizado, não uma
 - `width` e `height` em todo `<img>`; `loading="lazy"` fora da primeira dobra;
   `fetchpriority="high"` na do hero. Foto de hero até 200 KB, demais até 100 KB, `webp` ou
   `avif`; logo em `svg`.
-- Sem foto real ainda: bloco com a cor do mundo e o grafismo de assinatura, rotulado para a
-  pessoa como provisório. Nunca uma `<img>` quebrada no ar.
+- Sem foto da pessoa ainda: busque no Unsplash ou no Pexels (licença livre, sem atribuição
+  obrigatória) a foto do **assunto específico** (a sala de fisioterapia, a mão no volante, o
+  prato daquele tipo de cozinha), nunca da categoria ("negócios", "sucesso"). Uma foto
+  decisiva vale mais que cinco medianas. Baixe para `img/`, nomeie, e liste na entrega como
+  provisória. Nunca uma `<img>` quebrada no ar; nunca um bloco cinza "imagem aqui".
+- Além da fotografia, a página tem material visual autoral: grafismo de assinatura em SVG
+  inline, padrão em CSS (`repeating-linear-gradient`, `radial-gradient`, grade visível),
+  número gigante que é dado real, citação em display, tabela de horários desenhada, mapa de
+  passos. Texto sobre fundo liso é o que sobra quando nada disso foi feito.
+
+## Riqueza mínima
+
+Uma página passa neste piso ou volta para a construção. Conte, não sinta:
+
+| Item | Mínimo |
+|------|--------|
+| Campo que ocupa a tela inteira (cor da marca, foto com overlay, grafismo) | 1, e o hero costuma ser ele |
+| Seções com fotografia real (da pessoa ou de banco livre, provisória) | 3 |
+| Aparições do grafismo de assinatura (hero, divisor, moldura, marcador) | 3 |
+| Momentos de display grande fora do hero (número, citação, fechamento) | 2 |
+| Seções vizinhas com o mesmo fundo e a mesma densidade | no máximo 2 seguidas |
+| Momento de movimento autoral | 1 |
+| Elementos de texto sobre fundo liso sem nenhum outro material por seção | 0 em hero, prova, oferta e fechamento |
+
+Página "seca" é a que falha em três linhas desta tabela. A correção não é adicionar sombra
+e gradiente: é dar a cada seção um material (foto, campo de cor, grafismo, número, citação)
+que carregue o que ela diz.
 - Logos de clientes em cinza uniforme (`filter: grayscale(1); opacity: .7`), só se forem reais.
 
 ## Movimento
